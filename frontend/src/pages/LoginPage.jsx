@@ -3,27 +3,71 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 export default function LoginPage() {
     const { loginWithRedirect, isLoading } = useAuth0()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [showPass, setShowPass] = useState(false)
+    const [isEmailLoading, setIsEmailLoading] = useState(false)
+    const [isGoogleLoading, setIsGoogleLoading] = useState(false)
+    const [error, setError] = useState('')
+
+    const handleEmailSignIn = async (e) => {
+        e.preventDefault()
+        if (!email || !password) {
+            setError('Please enter your email and password.')
+            return
+        }
+        setError('')
+        setIsEmailLoading(true)
+        try {
+            await loginWithRedirect({
+                authorizationParams: {
+                    connection: 'Username-Password-Authentication',
+                    login_hint: email,
+                    prompt: 'login',
+                },
+            })
+        } catch (err) {
+            setError('Sign-in failed. Please check your credentials.')
+            console.error(err)
+        } finally {
+            setIsEmailLoading(false)
+        }
+    }
 
     const handleGoogleSignIn = async () => {
+        setError('')
+        setIsGoogleLoading(true)
         try {
             await loginWithRedirect({
                 authorizationParams: {
                     connection: 'google-oauth2',
-                    prompt: 'login', // Force login screen even if session exists
+                    prompt: 'login',
                 },
             })
-        } catch (error) {
-            console.error('Login error:', error)
+        } catch (err) {
+            setError('Google sign-in failed. Please try again.')
+            console.error(err)
+        } finally {
+            setIsGoogleLoading(false)
         }
     }
 
+    const busy = isLoading || isEmailLoading || isGoogleLoading
+
     return (
         <div style={styles.page}>
+            {/* Ambient background blobs */}
+            <div style={styles.blob1} />
+            <div style={styles.blob2} />
+
             <div className="glass-card" style={styles.card}>
                 {/* Logo */}
                 <div style={styles.logoRow}>
                     <div style={styles.logoIcon}>H</div>
-                    <div style={styles.logoText}>Health Ledger</div>
+                    <div>
+                        <div style={styles.logoText}>Health Ledger</div>
+                        <div style={styles.logoSubText}>Claims Management</div>
+                    </div>
                 </div>
 
                 <p style={styles.tagline}>
@@ -31,39 +75,97 @@ export default function LoginPage() {
                     for Medical Professionals
                 </p>
 
+                {/* Error banner */}
+                {error && (
+                    <div style={styles.errorBanner}>
+                        <span>⚠️</span> {error}
+                    </div>
+                )}
+
+                {/* Email/Password form */}
+                <form onSubmit={handleEmailSignIn} style={styles.form}>
+                    <div style={styles.fieldGroup}>
+                        <label style={styles.label} htmlFor="login-email">Email Address</label>
+                        <input
+                            id="login-email"
+                            type="email"
+                            placeholder="you@company.com"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            style={styles.input}
+                            disabled={busy}
+                            autoComplete="email"
+                            required
+                        />
+                    </div>
+
+                    <div style={styles.fieldGroup}>
+                        <label style={styles.label} htmlFor="login-password">Password</label>
+                        <div style={styles.passWrap}>
+                            <input
+                                id="login-password"
+                                type={showPass ? 'text' : 'password'}
+                                placeholder="••••••••"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                                style={{ ...styles.input, paddingRight: '2.8rem' }}
+                                disabled={busy}
+                                autoComplete="current-password"
+                                required
+                            />
+                            <button
+                                type="button"
+                                style={styles.eyeBtn}
+                                onClick={() => setShowPass(v => !v)}
+                                tabIndex={-1}
+                                aria-label={showPass ? 'Hide password' : 'Show password'}
+                            >
+                                {showPass ? '🙈' : '👁️'}
+                            </button>
+                        </div>
+                    </div>
+
+                    <button
+                        id="email-signin-btn"
+                        type="submit"
+                        className="btn btn-primary"
+                        style={styles.primaryBtn}
+                        disabled={busy}
+                    >
+                        {isEmailLoading ? (
+                            <><div style={styles.spinner} /> Signing in…</>
+                        ) : '🔐 Sign In'}
+                    </button>
+                </form>
+
+                {/* Divider */}
                 <div style={styles.divider}>
                     <span style={styles.dividerLine} />
-                    <span style={styles.dividerText}>Sign in to continue</span>
+                    <span style={styles.dividerText}>or continue with</span>
                     <span style={styles.dividerLine} />
                 </div>
 
+                {/* Google */}
                 <button
                     id="google-signin-btn"
                     style={{
                         ...styles.googleBtn,
-                        ...(isLoading ? styles.googleBtnLoading : {}),
+                        ...(busy ? styles.disabledBtn : {}),
                     }}
                     onClick={handleGoogleSignIn}
-                    disabled={isLoading}
+                    disabled={busy}
                 >
-                    {isLoading ? (
-                        <>
-                            <div style={styles.spinner} />
-                            Signing you in…
-                        </>
+                    {isGoogleLoading ? (
+                        <><div style={styles.spinner} /> Redirecting…</>
                     ) : (
-                        <>
-                            <GoogleIcon />
-                            Sign in with Google
-                        </>
+                        <><GoogleIcon /> Sign in with Google</>
                     )}
                 </button>
 
+                {/* Footer */}
                 <div style={styles.badge}>
-                    <span style={styles.lockIcon}>🔒</span>
-                    Secured access — Healthcare professionals only
+                    <span>🔒</span> Secured access — Healthcare professionals only
                 </div>
-
                 <div style={styles.footer}>
                     Health Ledger Claims Management System v2.0
                 </div>
@@ -90,12 +192,38 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '2rem',
+        position: 'relative',
+        overflow: 'hidden',
+    },
+    blob1: {
+        position: 'fixed',
+        top: '-10vh',
+        left: '-10vw',
+        width: '55vw',
+        height: '55vw',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%)',
+        pointerEvents: 'none',
+        zIndex: 0,
+    },
+    blob2: {
+        position: 'fixed',
+        bottom: '-10vh',
+        right: '-10vw',
+        width: '50vw',
+        height: '50vw',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(168,85,247,0.14) 0%, transparent 70%)',
+        pointerEvents: 'none',
+        zIndex: 0,
     },
     card: {
+        position: 'relative',
+        zIndex: 1,
         width: '100%',
-        maxWidth: 420,
-        padding: '2.75rem 2.5rem',
-        animation: 'fadeInUp 0.6s ease both',
+        maxWidth: 430,
+        padding: '2.5rem 2.25rem',
+        animation: 'fadeInUp 0.5s ease both',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -104,43 +232,127 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '0.75rem',
-        marginBottom: '1rem',
+        gap: '0.9rem',
+        marginBottom: '0.8rem',
     },
     logoIcon: {
-        width: 54,
-        height: 54,
-        borderRadius: 'var(--radius-md)',
+        width: 52,
+        height: 52,
+        borderRadius: '14px',
         background: 'var(--accent-gradient)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: '1.7rem',
+        fontSize: '1.6rem',
         fontWeight: 800,
         color: '#fff',
-        boxShadow: '0 4px 24px rgba(99, 102, 241, 0.45)',
+        boxShadow: '0 4px 24px rgba(99,102,241,0.45)',
+        flexShrink: 0,
     },
     logoText: {
-        fontSize: '1.6rem',
+        fontSize: '1.45rem',
         fontWeight: 800,
         background: 'var(--accent-gradient)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',
+        lineHeight: 1.2,
+    },
+    logoSubText: {
+        fontSize: '0.72rem',
+        color: 'var(--text-muted)',
+        fontWeight: 500,
+        letterSpacing: '0.04em',
     },
     tagline: {
         textAlign: 'center',
-        fontSize: '0.84rem',
+        fontSize: '0.82rem',
         color: 'var(--text-muted)',
-        marginBottom: '2rem',
+        marginBottom: '1.75rem',
         lineHeight: 1.6,
+    },
+    errorBanner: {
+        width: '100%',
+        padding: '0.65rem 0.9rem',
+        borderRadius: '8px',
+        background: 'rgba(239,68,68,0.12)',
+        border: '1px solid rgba(239,68,68,0.3)',
+        color: '#fca5a5',
+        fontSize: '0.82rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        marginBottom: '1rem',
+        boxSizing: 'border-box',
+    },
+    form: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+    },
+    fieldGroup: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.35rem',
+        width: '100%',
+    },
+    label: {
+        fontSize: '0.73rem',
+        fontWeight: 600,
+        color: 'var(--text-muted)',
+        textTransform: 'uppercase',
+        letterSpacing: '0.06em',
+    },
+    input: {
+        width: '100%',
+        padding: '0.7rem 0.9rem',
+        background: 'rgba(255,255,255,0.06)',
+        border: '1px solid var(--border-glass)',
+        borderRadius: '8px',
+        color: 'var(--text-primary)',
+        fontFamily: 'inherit',
+        fontSize: '0.9rem',
+        outline: 'none',
+        boxSizing: 'border-box',
+        transition: 'border-color 0.2s',
+    },
+    passWrap: {
+        position: 'relative',
+        width: '100%',
+    },
+    eyeBtn: {
+        position: 'absolute',
+        right: '0.7rem',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '1rem',
+        padding: '0.2rem',
+        lineHeight: 1,
+    },
+    primaryBtn: {
+        width: '100%',
+        padding: '0.8rem 1rem',
+        fontSize: '0.95rem',
+        fontWeight: 700,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0.5rem',
+        marginTop: '0.25rem',
+        borderRadius: '8px',
+        cursor: 'pointer',
+        transition: 'all 0.2s',
     },
     divider: {
         display: 'flex',
         alignItems: 'center',
         gap: '0.75rem',
         width: '100%',
-        marginBottom: '1.5rem',
+        margin: '1.25rem 0',
     },
     dividerLine: {
         flex: 1,
@@ -148,7 +360,7 @@ const styles = {
         background: 'var(--border-glass)',
     },
     dividerText: {
-        fontSize: '0.72rem',
+        fontSize: '0.7rem',
         color: 'var(--text-muted)',
         whiteSpace: 'nowrap',
         textTransform: 'uppercase',
@@ -160,25 +372,25 @@ const styles = {
         justifyContent: 'center',
         gap: '0.75rem',
         width: '100%',
-        padding: '0.85rem 1.5rem',
-        fontSize: '0.95rem',
+        padding: '0.78rem 1.5rem',
+        fontSize: '0.92rem',
         fontWeight: 600,
         fontFamily: 'inherit',
         color: '#fff',
         background: 'rgba(255,255,255,0.06)',
-        border: '1px solid rgba(255,255,255,0.12)',
-        borderRadius: 'var(--radius-sm)',
+        border: '1px solid rgba(255,255,255,0.14)',
+        borderRadius: '8px',
         cursor: 'pointer',
-        transition: 'all var(--transition-base)',
+        transition: 'all 0.2s',
         marginBottom: '1.5rem',
     },
-    googleBtnLoading: {
-        opacity: 0.7,
+    disabledBtn: {
+        opacity: 0.6,
         cursor: 'not-allowed',
     },
     spinner: {
-        width: 18,
-        height: 18,
+        width: 16,
+        height: 16,
         border: '2px solid rgba(255,255,255,0.2)',
         borderTopColor: '#fff',
         borderRadius: '50%',
@@ -189,19 +401,16 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         gap: '0.4rem',
-        fontSize: '0.75rem',
+        fontSize: '0.73rem',
         color: 'var(--text-muted)',
-        marginBottom: '2rem',
-    },
-    lockIcon: {
-        fontSize: '0.8rem',
+        marginBottom: '1.5rem',
     },
     footer: {
         textAlign: 'center',
-        fontSize: '0.72rem',
+        fontSize: '0.7rem',
         color: 'var(--text-muted)',
         borderTop: '1px solid var(--border-glass)',
-        paddingTop: '1.25rem',
+        paddingTop: '1rem',
         width: '100%',
     },
 }

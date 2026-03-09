@@ -9,7 +9,24 @@ import ClaimsListPage from './pages/ClaimsListPage.jsx'
 import ClaimDetailsPage from './pages/ClaimDetailsPage.jsx'
 
 function ProtectedRoute({ children }) {
-    const { isAuthenticated } = useAuth0()
+    const { isAuthenticated, isLoading } = useAuth0()
+    
+    // Wait for Auth0 to finish loading before deciding to redirect
+    if (isLoading) {
+        return (
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100vh',
+                color: 'var(--text-muted)',
+                fontSize: '0.95rem',
+                background: 'var(--bg-primary)'
+            }}>
+                Loading…
+            </div>
+        )
+    }
     
     return isAuthenticated ? children : <Navigate to="/" replace />
 }
@@ -62,7 +79,7 @@ function App() {
                 <Route
                     path="/"
                     element={
-                        isAuthenticated
+                        !isLoading && isAuthenticated
                             ? <Navigate to="/dashboard" replace />
                             : <LoginPage />
                     }

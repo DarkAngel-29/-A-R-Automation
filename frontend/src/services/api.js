@@ -111,26 +111,25 @@ export async function sendEmail(claimId, emailData) {
             }),
         })
     } catch {
-        // Network failure — backend is not running
+        // Network error — backend server is probably not running
         throw new Error(
-            'Cannot reach the email server. Please start the backend first:\n' +
-            'cd backend  →  node server.js'
+            'Cannot reach email server. Make sure the backend is running:\n  cd backend && node server.js'
         )
     }
 
-    // Safely parse JSON — server may return HTML if offline/proxied wrong
+    // ── Safely parse JSON (response body may be empty on proxy errors) ──
     let data = {}
     try {
         data = await response.json()
     } catch {
         throw new Error(
-            `Email server returned an invalid response (HTTP ${response.status}). ` +
-            'Make sure the backend is running: cd backend → node server.js'
+            `Email server returned an unexpected response (status ${response.status}). ` +
+            'Is the backend running on port 3001?'
         )
     }
 
     if (!response.ok) {
-        throw new Error(data.error || `Email server error (${response.status})`)
+        throw new Error(data.error || `Server error ${response.status}: Failed to send email`)
     }
 
     // ── Keep localStorage in sync ──────────────────────────────
