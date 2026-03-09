@@ -12,6 +12,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             domain="dev-yhe0us32zitgzf0w.us.auth0.com"
             clientId="DKeMk46KiURXVKIlGYR9qTPObTkjYSXm"
             redirectUri={redirectUri}
+            cacheLocation="localstorage"
+            useRefreshTokens={true}
         >
             <App />
         </Auth0Provider>
