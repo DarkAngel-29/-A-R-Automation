@@ -1,29 +1,45 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
+import { useAuth0 } from '@auth0/auth0-react'
 import LoginPage from './pages/LoginPage.jsx'
 import DashboardOverviewPage from './pages/DashboardOverviewPage.jsx'
 import GenerateClaimPage from './pages/GenerateClaimPage.jsx'
 import ClaimsListPage from './pages/ClaimsListPage.jsx'
 import ClaimDetailsPage from './pages/ClaimDetailsPage.jsx'
 
-function ProtectedRoute({ isAuthenticated, children }) {
+function ProtectedRoute({ children }) {
+    const { isAuthenticated } = useAuth0()
+    
     return isAuthenticated ? children : <Navigate to="/" replace />
 }
 
 function App() {
-    const [isAuthenticated, setIsAuthenticated] = React.useState(
-        () => sessionStorage.getItem('rcm_auth') === 'true'
-    )
-
-    const handleLogin = () => {
-        sessionStorage.setItem('rcm_auth', 'true')
-        setIsAuthenticated(true)
-    }
+    const { isAuthenticated, logout, isLoading } = useAuth0()
 
     const handleLogout = () => {
-        sessionStorage.removeItem('rcm_auth')
-        setIsAuthenticated(false)
+        logout({ 
+            logoutParams: { 
+                returnTo: window.location.origin 
+            }
+        })
+    }
+
+    // Show loading during auth check
+    if (isLoading) {
+        return (
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100vh',
+                color: 'var(--text-muted)',
+                fontSize: '0.95rem',
+                background: 'var(--bg-primary)'
+            }}>
+                Loading…
+            </div>
+        )
     }
 
     return (
@@ -48,7 +64,7 @@ function App() {
                     element={
                         isAuthenticated
                             ? <Navigate to="/dashboard" replace />
-                            : <LoginPage onLogin={handleLogin} />
+                            : <LoginPage />
                     }
                 />
 
@@ -56,7 +72,7 @@ function App() {
                 <Route
                     path="/dashboard"
                     element={
-                        <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <ProtectedRoute>
                             <DashboardOverviewPage onLogout={handleLogout} />
                         </ProtectedRoute>
                     }
@@ -64,7 +80,7 @@ function App() {
                 <Route
                     path="/generate"
                     element={
-                        <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <ProtectedRoute>
                             <GenerateClaimPage onLogout={handleLogout} />
                         </ProtectedRoute>
                     }
@@ -72,7 +88,7 @@ function App() {
                 <Route
                     path="/claims"
                     element={
-                        <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <ProtectedRoute>
                             <ClaimsListPage onLogout={handleLogout} />
                         </ProtectedRoute>
                     }
@@ -80,7 +96,7 @@ function App() {
                 <Route
                     path="/claims/:id"
                     element={
-                        <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <ProtectedRoute>
                             <ClaimDetailsPage onLogout={handleLogout} />
                         </ProtectedRoute>
                     }

@@ -1,13 +1,20 @@
 import React, { useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 
-export default function LoginPage({ onLogin }) {
-    const [isLoading, setIsLoading] = useState(false)
+export default function LoginPage() {
+    const { loginWithRedirect, isLoading } = useAuth0()
 
     const handleGoogleSignIn = async () => {
-        setIsLoading(true)
-        // Simulate OAuth flow delay
-        await new Promise(resolve => setTimeout(resolve, 900))
-        onLogin()
+        try {
+            await loginWithRedirect({
+                authorizationParams: {
+                    connection: 'google-oauth2',
+                    prompt: 'login', // Force login screen even if session exists
+                },
+            })
+        } catch (error) {
+            console.error('Login error:', error)
+        }
     }
 
     return (
@@ -30,7 +37,6 @@ export default function LoginPage({ onLogin }) {
                     <span style={styles.dividerLine} />
                 </div>
 
-                {/* Google Sign-In Button */}
                 <button
                     id="google-signin-btn"
                     style={{
