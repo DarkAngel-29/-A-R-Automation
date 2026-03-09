@@ -148,9 +148,13 @@ export default function ClaimDetailsPage({ onLogout }) {
         setShowEmailModal(true)
     }
 
-    const handleSendEmail = async (_subject, _body) => {
+    const handleSendEmail = async (subject, body) => {
         try {
-            const result = await sendEmail(claim.id)
+            const result = await sendEmail(claim.id, {
+                to: claim.insuranceEmail,
+                subject,
+                body,
+            })
             setClaim(prev => ({
                 ...prev,
                 emailSent: true,
@@ -162,8 +166,8 @@ export default function ClaimDetailsPage({ onLogout }) {
                 `📧 Email sent! Follow-up #${result.followUps} logged.`,
                 { duration: 3500 }
             )
-        } catch {
-            toast.error('Failed to send email', { icon: '❌' })
+        } catch (err) {
+            toast.error(err.message || 'Failed to send email', { icon: '❌' })
         }
     }
 

@@ -6,5 +6,12 @@ export default defineConfig({
     server: {
         port: 5173,
         open: false,
+        proxy: {
+            // Forward /api/* requests to the Express email backend
+            '/api': {
+                target: 'http://localhost:3001',
+                changeOrigin: true,
+            },
+        },
     },
 })

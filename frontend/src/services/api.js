@@ -90,27 +90,49 @@ export async function getClaimById(id) {
 }
 
 /**
- * POST equivalent — Send follow-up email for a claim.
- * Also increments the follow-up counter and records the timestamp.
+ * POST — Send a real follow-up email via the Node.js backend.
+ * Also updates localStorage so the UI stays in sync.
+ *
+ * @param {string} claimId
+ * @param {{ to: string, subject: string, body: string }} emailData
  */
-export async function sendEmail(claimId) {
-    await sleep(800) // simulate email sending
+export async function sendEmail(claimId, emailData) {
+    // ── Call the real backend ──────────────────────────────────
+    const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            claimId,
+            to: emailData.to,
+            subject: emailData.subject,
+            body: emailData.body,
+        }),
+    })
 
+    const data = await response.json()
+
+    if (!response.ok) {
+        throw new Error(data.error || 'Failed to send email')
+    }
+
+    // ── Keep localStorage in sync ──────────────────────────────
     const claims = getStoredClaims()
     const idx = claims.findIndex(c => c.id === claimId)
-    if (idx === -1) throw new Error('Claim not found')
+    if (idx !== -1) {
+        claims[idx].emailSent = true
+        claims[idx].followUps = (claims[idx].followUps || 0) + 1
+        claims[idx].lastFollowUp = data.lastFollowUp || new Date().toISOString()
+        saveStoredClaims(claims)
 
-    claims[idx].emailSent = true
-    claims[idx].followUps = (claims[idx].followUps || 0) + 1
-    claims[idx].lastFollowUp = new Date().toISOString()
-    saveStoredClaims(claims)
-
-    return {
-        success: true,
-        message: `Email sent to ${claims[idx].insuranceEmail}`,
-        followUps: claims[idx].followUps,
-        lastFollowUp: claims[idx].lastFollowUp,
+        return {
+            success: true,
+            message: `Email sent to ${emailData.to}`,
+            followUps: claims[idx].followUps,
+            lastFollowUp: claims[idx].lastFollowUp,
+        }
     }
+
+    return { success: true, ...data }
 }
 
 /**
