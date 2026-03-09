@@ -199,7 +199,7 @@ export default function ClaimDetailsPage({ onLogout }) {
         { label: 'Patient ID', value: claim.patientId, mono: true },
         { label: 'Insurance Company', value: claim.insuranceCompany },
         { label: 'Insurance Email', value: claim.insuranceEmail, mono: true },
-        { label: 'Claim Amount', value: `$${claim.claimAmount.toLocaleString()}` },
+        { label: 'Claim Amount', value: `₹${claim.claimAmount.toLocaleString()}` },
         { label: 'Days Pending', value: `${claim.daysPending} days` },
         { label: 'Created At', value: formatDate(claim.createdAt) },
     ]

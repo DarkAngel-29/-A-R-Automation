@@ -72,7 +72,7 @@ export default function GenerateClaimPage({ onLogout }) {
                                 </div>
                                 <div style={styles.resultRow}>
                                     <span style={styles.resultKey}>Amount</span>
-                                    <span style={styles.resultVal}>${lastClaim.claimAmount.toLocaleString()}</span>
+                                    <span style={styles.resultVal}>₹{lastClaim.claimAmount.toLocaleString()}</span>
                                 </div>
                                 <div style={styles.resultRow}>
                                     <span style={styles.resultKey}>Days Pending</span>

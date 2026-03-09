@@ -218,7 +218,7 @@ export default function ClaimsTable({ claims, onSendEmail, onViewClaim, highligh
                                         </td>
                                         <td style={styles.td}>{claim.patientId}</td>
                                         <td style={{ ...styles.td, ...styles.amount }}>
-                                            ${claim.claimAmount.toLocaleString()}
+                                            ₹{claim.claimAmount.toLocaleString()}
                                         </td>
                                         <td style={styles.td}>{claim.daysPending}</td>
                                         <td style={styles.td}>{claim.insuranceCompany}</td>

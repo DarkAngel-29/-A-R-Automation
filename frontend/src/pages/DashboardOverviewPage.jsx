@@ -127,7 +127,7 @@ export default function DashboardOverviewPage({ onLogout }) {
                     <div style={styles.amountInner}>
                         <span style={styles.amountLabel}>Total Claims Value</span>
                         <span style={styles.amountValue}>
-                            {isLoading ? '—' : `$${totalAmount.toLocaleString()}`}
+                            {isLoading ? '—' : `₹${totalAmount.toLocaleString()}`}
                         </span>
                     </div>
                 </div>

@@ -114,7 +114,7 @@ export default function DashboardPage({ onLogout }) {
         {
             icon: '💰',
             bg: 'rgba(34, 211, 238, 0.12)',
-            value: `$${totalAmount.toLocaleString()}`,
+            value: `₹${totalAmount.toLocaleString()}`,
             label: 'Total Amount',
         },
         {
