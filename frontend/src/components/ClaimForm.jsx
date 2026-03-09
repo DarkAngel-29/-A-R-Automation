@@ -120,7 +120,7 @@ export default function ClaimForm({ onSubmit, isSubmitting }) {
                     </div>
 
                     <div style={styles.fieldGroup}>
-                        <label htmlFor="claimAmount">Claim Amount ($)</label>
+                        <label htmlFor="claimAmount">Claim Amount (₹)</label>
                         <input
                             id="claimAmount"
                             name="claimAmount"

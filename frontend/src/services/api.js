@@ -98,21 +98,39 @@ export async function getClaimById(id) {
  */
 export async function sendEmail(claimId, emailData) {
     // ── Call the real backend ──────────────────────────────────
-    const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            claimId,
-            to: emailData.to,
-            subject: emailData.subject,
-            body: emailData.body,
-        }),
-    })
+    let response
+    try {
+        response = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                claimId,
+                to: emailData.to,
+                subject: emailData.subject,
+                body: emailData.body,
+            }),
+        })
+    } catch {
+        // Network failure — backend is not running
+        throw new Error(
+            'Cannot reach the email server. Please start the backend first:\n' +
+            'cd backend  →  node server.js'
+        )
+    }
 
-    const data = await response.json()
+    // Safely parse JSON — server may return HTML if offline/proxied wrong
+    let data = {}
+    try {
+        data = await response.json()
+    } catch {
+        throw new Error(
+            `Email server returned an invalid response (HTTP ${response.status}). ` +
+            'Make sure the backend is running: cd backend → node server.js'
+        )
+    }
 
     if (!response.ok) {
-        throw new Error(data.error || 'Failed to send email')
+        throw new Error(data.error || `Email server error (${response.status})`)
     }
 
     // ── Keep localStorage in sync ──────────────────────────────

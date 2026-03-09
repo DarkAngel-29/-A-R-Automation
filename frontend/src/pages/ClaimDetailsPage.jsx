@@ -23,7 +23,7 @@ We are writing to follow up regarding the status of the following insurance clai
 Claim Details:
 Claim ID: ${claim.id}
 Patient ID: ${claim.patientId}
-Claim Amount: $${claim.claimAmount.toLocaleString()}
+Claim Amount: ₹${claim.claimAmount.toLocaleString()}
 Days Pending: ${claim.daysPending}
 
 This is our follow-up attempt number ${nextFollowUpNum}.
