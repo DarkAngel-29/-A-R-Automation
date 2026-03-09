@@ -56,6 +56,7 @@ export async function generateClaim({ patientId, claimAmount, daysPending, insur
         insuranceCompany,
         insuranceEmail,
         priority,
+        status: 'Submitted',
         createdAt: new Date().toISOString(),
         emailSent: false,
         followUps: 0,

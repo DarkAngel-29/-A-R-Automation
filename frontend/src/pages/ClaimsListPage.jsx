@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect, useRef } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import Navbar from '../components/Navbar.jsx'
 import ClaimsTable from '../components/ClaimsTable.jsx'
+import ClaimsFilterBar, { defaultFilters, applyFilters } from '../components/ClaimsFilterBar.jsx'
 import { getClaims, sendEmail } from '../services/api.js'
 
 export default function ClaimsListPage({ onLogout }) {
     const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
     const [claims, setClaims] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [filter, setFilter] = useState('All')
+    const [filters, setFilters] = useState(() => {
+        // Bootstrap filters from URL query params
+        const f = defaultFilters()
+        const p = searchParams.get('priority')
+        const fu = searchParams.get('followup')
+        if (p) f.priority = p
+        if (fu === 'true' || fu === 'Required') f.followup = 'Required'
+        return f
+    })
+    const highlightId = searchParams.get('highlight')
+    const highlightShownRef = useRef(false)
 
     useEffect(() => {
         getClaims()
@@ -17,6 +29,21 @@ export default function ClaimsListPage({ onLogout }) {
             .catch(() => toast.error('Failed to load claims'))
             .finally(() => setIsLoading(false))
     }, [])
+
+    // Show highlight toast once, after data loads
+    useEffect(() => {
+        if (!isLoading && highlightId && !highlightShownRef.current) {
+            highlightShownRef.current = true
+            toast(`📌 Viewing ${highlightId} from Follow-Up Reminder`, {
+                duration: 4000,
+                style: {
+                    background: 'rgba(99,102,241,0.15)',
+                    border: '1px solid rgba(99,102,241,0.3)',
+                    color: 'var(--text-primary)',
+                },
+            })
+        }
+    }, [isLoading, highlightId])
 
     const handleSendEmail = async (claimId) => {
         try {
@@ -34,14 +61,21 @@ export default function ClaimsListPage({ onLogout }) {
         navigate(`/claims/${claimId}`)
     }
 
-    const priorities = ['All', 'High', 'Medium', 'Low']
-    const filtered = filter === 'All' ? claims : claims.filter(c => c.priority === filter)
+    const filtered = applyFilters(claims, filters)
 
-    const filterBadgeColor = {
-        All: { bg: 'rgba(99,102,241,0.1)', color: 'var(--accent-indigo-light)', border: 'rgba(99,102,241,0.2)' },
-        High: { bg: 'var(--priority-high-bg)', color: 'var(--priority-high)', border: 'rgba(239,68,68,0.25)' },
-        Medium: { bg: 'var(--priority-medium-bg)', color: 'var(--priority-medium)', border: 'rgba(245,158,11,0.25)' },
-        Low: { bg: 'var(--priority-low-bg)', color: 'var(--priority-low)', border: 'rgba(34,197,94,0.25)' },
+    const claimCounts = {
+        High: claims.filter(c => c.priority === 'High').length,
+        Medium: claims.filter(c => c.priority === 'Medium').length,
+        Low: claims.filter(c => c.priority === 'Low').length,
+    }
+
+    const activeFilterDescription = () => {
+        const parts = []
+        if (filters.priority !== 'All') parts.push(filters.priority + ' priority')
+        if (filters.status !== 'All') parts.push(filters.status)
+        if (filters.followup !== 'All') parts.push(filters.followup === 'Required' ? 'follow-up required' : 'no follow-up')
+        if (filters.search.trim()) parts.push(`"${filters.search.trim()}"`)
+        return parts.length ? parts.join(' · ') : 'all'
     }
 
     return (
@@ -54,7 +88,7 @@ export default function ClaimsListPage({ onLogout }) {
                     <div>
                         <h1 style={styles.heading}>Claims List</h1>
                         <p style={styles.subheading}>
-                            {filtered.length} {filter === 'All' ? 'total' : filter.toLowerCase()} claim{filtered.length !== 1 ? 's' : ''}
+                            {isLoading ? '…' : `${filtered.length} ${activeFilterDescription()} claim${filtered.length !== 1 ? 's' : ''}`}
                         </p>
                     </div>
                     <button
@@ -66,28 +100,12 @@ export default function ClaimsListPage({ onLogout }) {
                     </button>
                 </div>
 
-                {/* Priority filter tabs */}
-                <div style={styles.filterRow}>
-                    {priorities.map(p => {
-                        const isActive = filter === p
-                        const colors = filterBadgeColor[p]
-                        return (
-                            <button
-                                key={p}
-                                id={`filter-${p.toLowerCase()}`}
-                                onClick={() => setFilter(p)}
-                                style={{
-                                    ...styles.filterBtn,
-                                    background: isActive ? colors.bg : 'transparent',
-                                    color: isActive ? colors.color : 'var(--text-muted)',
-                                    border: `1px solid ${isActive ? colors.border : 'var(--border-glass)'}`,
-                                }}
-                            >
-                                {p} {p !== 'All' && <span style={styles.filterCount}>{claims.filter(c => c.priority === p).length}</span>}
-                            </button>
-                        )
-                    })}
-                </div>
+                {/* Filter Bar */}
+                <ClaimsFilterBar
+                    filters={filters}
+                    onChange={setFilters}
+                    claimCounts={claimCounts}
+                />
 
                 {/* Table */}
                 {isLoading ? (
@@ -95,11 +113,11 @@ export default function ClaimsListPage({ onLogout }) {
                 ) : filtered.length === 0 ? (
                     <div className="glass-card" style={styles.empty}>
                         <div style={styles.emptyIcon}>📭</div>
-                        <div style={styles.emptyTitle}>No {filter !== 'All' ? filter.toLowerCase() + ' ' : ''}claims yet</div>
+                        <div style={styles.emptyTitle}>No matching claims</div>
                         <div style={styles.emptyDesc}>
-                            {filter !== 'All' ? 'Try a different filter, or ' : ''}
+                            Try adjusting your filters, or{' '}
                             <button style={styles.emptyLink} onClick={() => navigate('/generate')}>
-                                generate your first claim →
+                                generate a new claim →
                             </button>
                         </div>
                     </div>
@@ -108,6 +126,7 @@ export default function ClaimsListPage({ onLogout }) {
                         claims={filtered}
                         onSendEmail={handleSendEmail}
                         onViewClaim={handleViewClaim}
+                        highlightId={highlightId}
                     />
                 )}
             </main>
@@ -135,31 +154,6 @@ const styles = {
     },
     heading: { fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 },
     subheading: { fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.2rem' },
-    filterRow: {
-        display: 'flex',
-        gap: '0.5rem',
-        flexWrap: 'wrap',
-        animation: 'fadeInUp 0.4s ease both',
-        animationDelay: '0.05s',
-    },
-    filterBtn: {
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '0.4rem',
-        padding: '0.4rem 1rem',
-        fontSize: '0.82rem',
-        fontWeight: 600,
-        borderRadius: 'var(--radius-full)',
-        cursor: 'pointer',
-        fontFamily: 'inherit',
-        transition: 'all var(--transition-fast)',
-    },
-    filterCount: {
-        background: 'rgba(255,255,255,0.08)',
-        borderRadius: 'var(--radius-full)',
-        padding: '0.05rem 0.4rem',
-        fontSize: '0.72rem',
-    },
     loading: { textAlign: 'center', padding: '3rem', color: 'var(--text-muted)', fontSize: '0.9rem' },
     empty: {
         display: 'flex',
