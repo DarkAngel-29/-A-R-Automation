@@ -15,13 +15,13 @@ export default function LoginPage({ onLogin }) {
             <div className="glass-card" style={styles.card}>
                 {/* Logo */}
                 <div style={styles.logoRow}>
-                    <div style={styles.logoIcon}>R</div>
-                    <div style={styles.logoText}>RCM Suite</div>
+                    <div style={styles.logoIcon}>H</div>
+                    <div style={styles.logoText}>Health Ledger</div>
                 </div>
 
                 <p style={styles.tagline}>
-                    AI-Powered Revenue Cycle Management<br />
-                    for Healthcare Billing Teams
+                    AI-Powered Healthcare Claims Management<br />
+                    for Medical Professionals
                 </p>
 
                 <div style={styles.divider}>
@@ -55,11 +55,11 @@ export default function LoginPage({ onLogin }) {
 
                 <div style={styles.badge}>
                     <span style={styles.lockIcon}>🔒</span>
-                    Secured access — Hospital staff only
+                    Secured access — Healthcare professionals only
                 </div>
 
                 <div style={styles.footer}>
-                    Hospital Revenue Cycle Management System v2.0
+                    Health Ledger Claims Management System v2.0
                 </div>
             </div>
         </div>

@@ -1,0 +1,21 @@
+{
+  "name": "health-ledger",
+  "version": "1.0.0",
+  "description": "Health Ledger — A comprehensive healthcare claim management system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarkAngel-29/-A-R-Automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DarkAngel-29/-A-R-Automation/issues"
+  },
+  "homepage": "https://github.com/DarkAngel-29/-A-R-Automation#readme"
+}

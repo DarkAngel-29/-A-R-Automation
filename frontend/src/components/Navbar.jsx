@@ -19,10 +19,10 @@ export default function Navbar({ onLogout }) {
         <nav style={styles.nav}>
             {/* Brand */}
             <div style={styles.brand}>
-                <div style={styles.logo}>R</div>
+                <div style={styles.logo}>H</div>
                 <div>
-                    <div style={styles.title}>RCM Suite</div>
-                    <div style={styles.subtitle}>Revenue Cycle Management</div>
+                    <div style={styles.title}>Health Ledger</div>
+                    <div style={styles.subtitle}>Healthcare Claims Management</div>
                 </div>
             </div>
 
