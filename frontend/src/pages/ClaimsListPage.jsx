@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import Navbar from '../components/Navbar.jsx'
 import ClaimsTable from '../components/ClaimsTable.jsx'
 import ClaimsFilterBar, { defaultFilters, applyFilters } from '../components/ClaimsFilterBar.jsx'
-import { getClaims, sendEmail } from '../services/api.js'
+import { getClaims, deleteClaim } from '../services/api.js'
 
 export default function ClaimsListPage({ onLogout }) {
     const navigate = useNavigate()
@@ -45,15 +45,14 @@ export default function ClaimsListPage({ onLogout }) {
         }
     }, [isLoading, highlightId])
 
-    const handleSendEmail = async (claimId) => {
+
+    const handleRemoveClaim = async (claimId) => {
         try {
-            const result = await sendEmail(claimId)
-            setClaims(prev =>
-                prev.map(c => (c.id === claimId ? { ...c, emailSent: true } : c))
-            )
-            toast.success(result.message, { duration: 3000, icon: '📧' })
+            await deleteClaim(claimId)
+            setClaims(prev => prev.filter(c => c.id !== claimId))
+            toast.success('Claim removed successfully.', { icon: '🗑️', duration: 3000 })
         } catch {
-            toast.error('Failed to send email', { icon: '❌' })
+            toast.error('Failed to remove claim.', { icon: '❌' })
         }
     }
 
@@ -124,8 +123,8 @@ export default function ClaimsListPage({ onLogout }) {
                 ) : (
                     <ClaimsTable
                         claims={filtered}
-                        onSendEmail={handleSendEmail}
                         onViewClaim={handleViewClaim}
+                        onRemoveClaim={handleRemoveClaim}
                         highlightId={highlightId}
                     />
                 )}

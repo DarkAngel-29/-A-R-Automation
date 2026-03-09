@@ -3,7 +3,7 @@ import toast from 'react-hot-toast'
 import Navbar from '../components/Navbar.jsx'
 import ClaimForm from '../components/ClaimForm.jsx'
 import ClaimsTable from '../components/ClaimsTable.jsx'
-import { generateClaim, getClaims, sendEmail } from '../services/api.js'
+import { generateClaim, getClaims } from '../services/api.js'
 
 const styles = {
     page: {
@@ -87,17 +87,6 @@ export default function DashboardPage({ onLogout }) {
         }
     }
 
-    const handleSendEmail = async (claimId) => {
-        try {
-            const result = await sendEmail(claimId)
-            setClaims(prev =>
-                prev.map(c => (c.id === claimId ? { ...c, emailSent: true } : c))
-            )
-            toast.success(result.message, { duration: 3000, icon: '📧' })
-        } catch (err) {
-            toast.error('Failed to send email', { icon: '❌' })
-        }
-    }
 
     // Compute stats
     const totalAmount = claims.reduce((s, c) => s + c.claimAmount, 0)
@@ -172,7 +161,7 @@ export default function DashboardPage({ onLogout }) {
                         Loading claims…
                     </div>
                 ) : (
-                    <ClaimsTable claims={claims} onSendEmail={handleSendEmail} />
+                    <ClaimsTable claims={claims} />
                 )}
             </main>
         </div>

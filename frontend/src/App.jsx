@@ -10,54 +10,33 @@ import ClaimDetailsPage from './pages/ClaimDetailsPage.jsx'
 
 function ProtectedRoute({ children }) {
     const { isAuthenticated, isLoading } = useAuth0()
-    
-    // Wait for Auth0 to finish loading before deciding to redirect
-    if (isLoading) {
-        return (
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100vh',
-                color: 'var(--text-muted)',
-                fontSize: '0.95rem',
-                background: 'var(--bg-primary)'
-            }}>
-                Loading…
-            </div>
-        )
-    }
-    
+    if (isLoading) return <LoadingScreen />
     return isAuthenticated ? children : <Navigate to="/" replace />
 }
 
+function LoadingScreen() {
+    return (
+        <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            height: '100vh', color: 'var(--text-muted)', fontSize: '0.95rem',
+            background: 'var(--bg-primary)',
+        }}>
+            Loading…
+        </div>
+    )
+}
+
 function App() {
-    const { isAuthenticated, logout, isLoading } = useAuth0()
+    const { isAuthenticated, isLoading, logout, user } = useAuth0()
+
+    // The logged-in user's email (from Google or email/password sign-in)
+    const userEmail = user?.email || ''
 
     const handleLogout = () => {
-        logout({ 
-            logoutParams: { 
-                returnTo: window.location.origin 
-            }
-        })
+        logout({ logoutParams: { returnTo: window.location.origin } })
     }
 
-    // Show loading during auth check
-    if (isLoading) {
-        return (
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100vh',
-                color: 'var(--text-muted)',
-                fontSize: '0.95rem',
-                background: 'var(--bg-primary)'
-            }}>
-                Loading…
-            </div>
-        )
-    }
+    if (isLoading) return <LoadingScreen />
 
     return (
         <BrowserRouter>
@@ -85,39 +64,27 @@ function App() {
                     }
                 />
 
-                {/* Protected */}
-                <Route
-                    path="/dashboard"
-                    element={
-                        <ProtectedRoute>
-                            <DashboardOverviewPage onLogout={handleLogout} />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/generate"
-                    element={
-                        <ProtectedRoute>
-                            <GenerateClaimPage onLogout={handleLogout} />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/claims"
-                    element={
-                        <ProtectedRoute>
-                            <ClaimsListPage onLogout={handleLogout} />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/claims/:id"
-                    element={
-                        <ProtectedRoute>
-                            <ClaimDetailsPage onLogout={handleLogout} />
-                        </ProtectedRoute>
-                    }
-                />
+                {/* Protected — pass userEmail to pages that need it */}
+                <Route path="/dashboard" element={
+                    <ProtectedRoute>
+                        <DashboardOverviewPage onLogout={handleLogout} userEmail={userEmail} />
+                    </ProtectedRoute>
+                } />
+                <Route path="/generate" element={
+                    <ProtectedRoute>
+                        <GenerateClaimPage onLogout={handleLogout} userEmail={userEmail} />
+                    </ProtectedRoute>
+                } />
+                <Route path="/claims" element={
+                    <ProtectedRoute>
+                        <ClaimsListPage onLogout={handleLogout} userEmail={userEmail} />
+                    </ProtectedRoute>
+                } />
+                <Route path="/claims/:id" element={
+                    <ProtectedRoute>
+                        <ClaimDetailsPage onLogout={handleLogout} userEmail={userEmail} />
+                    </ProtectedRoute>
+                } />
 
                 {/* Fallback */}
                 <Route path="*" element={<Navigate to="/" replace />} />

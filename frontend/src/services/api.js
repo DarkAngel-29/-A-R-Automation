@@ -168,3 +168,15 @@ export async function addFollowUp(claimId) {
 
     return { success: true, followUps: claims[idx].followUps, lastFollowUp: claims[idx].lastFollowUp }
 }
+
+/**
+ * DELETE equivalent — Remove a claim by ID from localStorage.
+ */
+export async function deleteClaim(claimId) {
+    await sleep(200)
+    const claims = getStoredClaims()
+    const filtered = claims.filter(c => c.id !== claimId)
+    if (filtered.length === claims.length) throw new Error(`Claim ${claimId} not found`)
+    saveStoredClaims(filtered)
+    return { success: true }
+}

@@ -3,12 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import Navbar from '../components/Navbar.jsx'
 import PriorityBadge from '../components/PriorityBadge.jsx'
-import { getClaimById, sendEmail } from '../services/api.js'
+import { getClaimById, sendEmail, deleteClaim } from '../services/api.js'
 
 /* ─────────────────────────────────────────────
    Follow-up Email Report Modal
 ───────────────────────────────────────────── */
-function FollowUpEmailModal({ claim, onSend, onCancel }) {
+function FollowUpEmailModal({ claim, userEmail, onSend, onCancel }) {
     const nextFollowUpNum = (claim.followUps ?? 0) + 1
 
     const defaultSubject = `Follow-up Regarding Claim ID ${claim.id}`
@@ -58,6 +58,18 @@ Health Ledger RCM Team`
                     </div>
                     <button style={modalStyles.closeBtn} onClick={onCancel} aria-label="Close">✕</button>
                 </div>
+
+                {/* From field */}
+                {userEmail && (
+                    <div style={modalStyles.field}>
+                        <label style={modalStyles.label}>FROM</label>
+                        <div style={modalStyles.readonlyValue}>
+                            <span style={modalStyles.emailIcon}>👤</span>
+                            <span style={modalStyles.emailAddr}>{userEmail}</span>
+                            <span style={modalStyles.tag}>You</span>
+                        </div>
+                    </div>
+                )}
 
                 {/* To field */}
                 <div style={modalStyles.field}>
@@ -127,12 +139,13 @@ Health Ledger RCM Team`
 /* ─────────────────────────────────────────────
    Claim Details Page
 ───────────────────────────────────────────── */
-export default function ClaimDetailsPage({ onLogout }) {
+export default function ClaimDetailsPage({ onLogout, userEmail }) {
     const { id } = useParams()
     const navigate = useNavigate()
     const [claim, setClaim] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [showEmailModal, setShowEmailModal] = useState(false)
+    const [showRemoveConfirm, setShowRemoveConfirm] = useState(false)
 
     useEffect(() => {
         getClaimById(id)
@@ -151,6 +164,7 @@ export default function ClaimDetailsPage({ onLogout }) {
     const handleSendEmail = async (subject, body) => {
         try {
             const result = await sendEmail(claim.id, {
+                from: userEmail || undefined,
                 to: claim.insuranceEmail,
                 subject,
                 body,
@@ -173,6 +187,16 @@ export default function ClaimDetailsPage({ onLogout }) {
 
     const handleCancelModal = () => {
         setShowEmailModal(false)
+    }
+
+    const handleRemoveClaim = async () => {
+        try {
+            await deleteClaim(claim.id)
+            toast.success('Claim removed successfully.', { icon: '🗑️', duration: 3000 })
+            navigate('/claims')
+        } catch {
+            toast.error('Failed to remove claim.', { icon: '❌' })
+        }
     }
 
     const formatDate = (iso) => {
@@ -225,6 +249,16 @@ export default function ClaimDetailsPage({ onLogout }) {
                     <p style={styles.subheading}>
                         Patient {claim.patientId} · {claim.insuranceCompany}
                     </p>
+                    {/* Subtle remove action — low-priority, hidden in normal flow */}
+                    <button
+                        id="remove-claim-btn"
+                        style={styles.removeLink}
+                        onClick={() => setShowRemoveConfirm(true)}
+                        onMouseEnter={e => { e.currentTarget.style.color = '#f87171' }}
+                        onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)' }}
+                    >
+                        🗑️ Remove this claim
+                    </button>
                 </div>
 
                 <div style={styles.layout}>
@@ -297,9 +331,41 @@ export default function ClaimDetailsPage({ onLogout }) {
             {showEmailModal && (
                 <FollowUpEmailModal
                     claim={claim}
+                    userEmail={userEmail}
                     onSend={handleSendEmail}
                     onCancel={handleCancelModal}
                 />
+            )}
+
+            {/* Remove Claim Confirmation Modal */}
+            {showRemoveConfirm && (
+                <div style={removeModalStyles.overlay}>
+                    <div style={removeModalStyles.box} className="glass-card">
+                        <div style={removeModalStyles.icon}>🗑️</div>
+                        <h3 style={removeModalStyles.title}>Remove Claim</h3>
+                        <p style={removeModalStyles.msg}>
+                            Are you sure you want to remove <strong>{claim.id}</strong>?<br />
+                            This action cannot be undone.
+                        </p>
+                        <div style={removeModalStyles.actions}>
+                            <button
+                                className="btn btn-secondary"
+                                style={{ flex: 1, padding: '0.65rem' }}
+                                onClick={() => setShowRemoveConfirm(false)}
+                                id="remove-cancel-btn"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                style={removeModalStyles.removeBtn}
+                                onClick={handleRemoveClaim}
+                                id="remove-confirm-btn"
+                            >
+                                Remove Claim
+                            </button>
+                        </div>
+                    </div>
+                </div>
             )}
         </div>
     )
@@ -520,4 +586,49 @@ const modalStyles = {
     },
     cancelBtn: { minWidth: 100 },
     sendBtn: { minWidth: 140 },
+    removeLink: {
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        fontFamily: 'inherit',
+        fontSize: '0.75rem',
+        color: 'var(--text-muted)',
+        padding: '0.25rem 0',
+        marginTop: '0.25rem',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.3rem',
+        transition: 'color 0.2s',
+        alignSelf: 'flex-start',
+    },
+}
+
+const removeModalStyles = {
+    overlay: {
+        position: 'fixed', inset: 0, zIndex: 9999,
+        background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(6px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+    },
+    box: {
+        maxWidth: 380, width: '90%', padding: '2rem',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem',
+        animation: 'fadeInUp 0.25s ease both',
+    },
+    icon: { fontSize: '2rem', lineHeight: 1 },
+    title: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 },
+    msg: {
+        textAlign: 'center', fontSize: '0.87rem',
+        color: 'var(--text-muted)', lineHeight: 1.6, margin: 0,
+    },
+    actions: { display: 'flex', gap: '0.75rem', marginTop: '0.5rem', width: '100%' },
+    removeBtn: {
+        flex: 1, padding: '0.65rem',
+        background: 'rgba(239,68,68,0.15)',
+        border: '1px solid rgba(239,68,68,0.4)',
+        borderRadius: 'var(--radius-sm)',
+        color: '#f87171',
+        fontFamily: 'inherit', fontWeight: 700,
+        fontSize: '0.875rem', cursor: 'pointer',
+        transition: 'all 0.2s',
+    },
 }

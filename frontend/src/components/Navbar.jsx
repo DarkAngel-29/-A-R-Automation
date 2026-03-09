@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const navLinks = [
@@ -7,13 +7,42 @@ const navLinks = [
     { to: '/claims', label: 'Claims List', icon: '📋' },
 ]
 
+/* ── Theme helpers ── */
+function getStoredTheme() {
+    return localStorage.getItem('theme') === 'light' ? 'light' : 'dark'
+}
+
+function applyTheme(theme) {
+    const root = document.documentElement
+    if (theme === 'light') {
+        root.classList.add('light-theme')
+    } else {
+        root.classList.remove('light-theme')
+    }
+    localStorage.setItem('theme', theme)
+}
+
 export default function Navbar({ onLogout }) {
     const navigate = useNavigate()
+    const [theme, setTheme] = useState(getStoredTheme)
+
+    // Apply stored theme on mount
+    useEffect(() => {
+        applyTheme(theme)
+    }, [])
+
+    const toggleTheme = () => {
+        const next = theme === 'dark' ? 'light' : 'dark'
+        setTheme(next)
+        applyTheme(next)
+    }
 
     const handleLogout = () => {
         onLogout()
         navigate('/')
     }
+
+    const isLight = theme === 'light'
 
     return (
         <nav style={styles.nav}>
@@ -21,7 +50,12 @@ export default function Navbar({ onLogout }) {
             <div style={styles.brand}>
                 <div style={styles.logo}>H</div>
                 <div>
-                    <div style={styles.title}>Health Ledger</div>
+                    <div style={{
+                        ...styles.title,
+                        ...(isLight ? { background: 'none', WebkitTextFillColor: '#202124', color: '#202124' } : {}),
+                    }}>
+                        Health Ledger
+                    </div>
                     <div style={styles.subtitle}>Healthcare Claims Management</div>
                 </div>
             </div>
@@ -35,33 +69,49 @@ export default function Navbar({ onLogout }) {
                         id={`nav-${label.toLowerCase().replace(/\s+/g, '-')}`}
                         style={({ isActive }) => ({
                             ...styles.link,
-                            ...(isActive ? styles.linkActive : {}),
+                            ...(isActive
+                                ? (isLight ? styles.linkActiveLight : styles.linkActive)
+                                : {}),
+                            ...(isLight ? styles.linkLight : {}),
                         })}
                     >
                         <span style={styles.linkIcon}>{icon}</span>
                         {label}
-                        {/* Active underline bar — only rendered as a sibling below the text */}
                     </NavLink>
                 ))}
             </div>
 
             {/* Right side */}
             <div style={styles.right}>
-                <div style={styles.status}>
-                    <span style={styles.dot} />
+                <div style={{ ...styles.status, ...(isLight ? { color: '#137333' } : {}) }}>
+                    <span style={{ ...styles.dot, ...(isLight ? { background: '#137333' } : {}) }} />
                     System Active
                 </div>
+
+                {/* ☀ / 🌙 Theme toggle */}
+                <button
+                    id="theme-toggle-btn"
+                    className="theme-toggle"
+                    onClick={toggleTheme}
+                    title={isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+                >
+                    {isLight ? '🌙 Dark' : '☀️ Light'}
+                </button>
+
                 <button
                     id="logout-btn"
-                    style={styles.logoutBtn}
+                    style={{
+                        ...styles.logoutBtn,
+                        ...(isLight ? styles.logoutBtnLight : {}),
+                    }}
                     onClick={handleLogout}
                     onMouseEnter={e => {
-                        e.currentTarget.style.color = 'var(--error)'
-                        e.currentTarget.style.borderColor = 'rgba(239,68,68,0.3)'
+                        e.currentTarget.style.color = isLight ? '#D93025' : 'var(--error)'
+                        e.currentTarget.style.borderColor = 'rgba(217,48,37,0.3)'
                     }}
                     onMouseLeave={e => {
-                        e.currentTarget.style.color = 'var(--text-secondary)'
-                        e.currentTarget.style.borderColor = 'var(--border-glass)'
+                        e.currentTarget.style.color = isLight ? '#5F6368' : 'var(--text-secondary)'
+                        e.currentTarget.style.borderColor = isLight ? '#DADCE0' : 'var(--border-glass)'
                     }}
                 >
                     ← Logout
@@ -136,22 +186,28 @@ const styles = {
         color: 'var(--text-secondary)',
         textDecoration: 'none',
         borderRadius: 'var(--radius-sm)',
-        transition: 'all var(--transition-fast)',
+        transition: 'all 0.15s ease',
         border: '1px solid transparent',
+    },
+    linkLight: {
+        color: '#5F6368',
     },
     linkActive: {
         color: 'var(--accent-indigo-light)',
         background: 'rgba(99,102,241,0.1)',
         border: '1px solid rgba(99,102,241,0.2)',
     },
-    linkIcon: {
-        fontSize: '0.9rem',
+    linkActiveLight: {
+        color: '#1A73E8',
+        background: '#E8F0FE',
+        border: '1px solid #C5D8FB',
     },
+    linkIcon: { fontSize: '0.9rem' },
     right: {
         display: 'flex',
         alignItems: 'center',
-        gap: '1rem',
-        minWidth: 180,
+        gap: '0.75rem',
+        minWidth: 220,
         justifyContent: 'flex-end',
     },
     status: {
@@ -178,6 +234,12 @@ const styles = {
         border: '1px solid var(--border-glass)',
         borderRadius: 'var(--radius-sm)',
         cursor: 'pointer',
-        transition: 'all var(--transition-fast)',
+        transition: 'all 0.15s ease',
+        fontFamily: 'inherit',
+    },
+    logoutBtnLight: {
+        color: '#5F6368',
+        background: '#F1F3F4',
+        border: '1px solid #DADCE0',
     },
 }

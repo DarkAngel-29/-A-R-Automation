@@ -37,7 +37,7 @@ transporter.verify((err) => {
 
 // ── POST /api/send-email ──────────────────────────────────────
 app.post('/api/send-email', async (req, res) => {
-    const { to, subject, body, claimId } = req.body
+    const { to, subject, body, claimId, from } = req.body
 
     // Basic validation
     if (!to || !subject || !body) {
@@ -47,12 +47,17 @@ app.post('/api/send-email', async (req, res) => {
         })
     }
 
+    // Use the logged-in user's email as the Reply-To (so insurer replies to them)
+    // The actual sender is always SMTP_USER (required by Gmail/Outlook auth)
+    const senderName = process.env.SENDER_NAME || 'Health Ledger RCM Team'
+    const replyToAddress = from || process.env.SMTP_USER
+
     const mailOptions = {
-        from: `"${process.env.SENDER_NAME || 'Health Ledger RCM'}" <${process.env.SMTP_USER}>`,
+        from: `"${senderName}" <${process.env.SMTP_USER}>`,
         to,
+        replyTo: replyToAddress,   // insurer replies to the logged-in user's email
         subject,
         text: body,
-        // Also send HTML version with simple formatting
         html: `<pre style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;white-space:pre-wrap;">${body}</pre>`,
     }
 

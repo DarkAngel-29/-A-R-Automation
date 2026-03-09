@@ -8,7 +8,10 @@ export default function LoginPage() {
     const [showPass, setShowPass] = useState(false)
     const [isEmailLoading, setIsEmailLoading] = useState(false)
     const [isGoogleLoading, setIsGoogleLoading] = useState(false)
+    const [isSignUpLoading, setIsSignUpLoading] = useState(false)
     const [error, setError] = useState('')
+    const [mode, setMode] = useState('signin') // 'signin' | 'signup'
+
 
     const handleEmailSignIn = async (e) => {
         e.preventDefault()
@@ -34,6 +37,26 @@ export default function LoginPage() {
         }
     }
 
+    const handleSignUp = async () => {
+        setError('')
+        setIsSignUpLoading(true)
+        try {
+            await loginWithRedirect({
+                authorizationParams: {
+                    connection: 'Username-Password-Authentication',
+                    screen_hint: 'signup',
+                    login_hint: 'abithb16@gmail.com',
+                    prompt: 'login',
+                },
+            })
+        } catch (err) {
+            setError('Sign-up failed. Please try again.')
+            console.error(err)
+        } finally {
+            setIsSignUpLoading(false)
+        }
+    }
+
     const handleGoogleSignIn = async () => {
         setError('')
         setIsGoogleLoading(true)
@@ -52,7 +75,7 @@ export default function LoginPage() {
         }
     }
 
-    const busy = isLoading || isEmailLoading || isGoogleLoading
+    const busy = isLoading || isEmailLoading || isGoogleLoading || isSignUpLoading
 
     return (
         <div style={styles.page}>
@@ -161,6 +184,32 @@ export default function LoginPage() {
                         <><GoogleIcon /> Sign in with Google</>
                     )}
                 </button>
+
+                {/* Create Account / Sign In toggle */}
+                <div style={styles.createAccountRow}>
+                    <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                        {mode === 'signin' ? "Don't have an account?" : 'Already have an account?'}
+                    </span>
+                    <button
+                        id={mode === 'signin' ? 'create-account-btn' : 'back-to-signin-btn'}
+                        style={styles.linkBtn}
+                        onClick={() => {
+                            if (mode === 'signup') {
+                                setMode('signin')
+                            } else {
+                                handleSignUp()
+                            }
+                        }}
+                        disabled={busy}
+                        type="button"
+                    >
+                        {isSignUpLoading
+                            ? 'Redirecting…'
+                            : mode === 'signin'
+                                ? 'Create Account'
+                                : 'Sign In'}
+                    </button>
+                </div>
 
                 {/* Footer */}
                 <div style={styles.badge}>
@@ -412,5 +461,28 @@ const styles = {
         borderTop: '1px solid var(--border-glass)',
         paddingTop: '1rem',
         width: '100%',
+    },
+    createAccountRow: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0.5rem',
+        marginBottom: '1.25rem',
+        width: '100%',
+    },
+    linkBtn: {
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        fontFamily: 'inherit',
+        fontSize: '0.82rem',
+        fontWeight: 700,
+        background: 'var(--accent-gradient)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        padding: 0,
+        textDecoration: 'underline',
+        textUnderlineOffset: '2px',
     },
 }
