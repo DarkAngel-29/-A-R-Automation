@@ -91,6 +91,7 @@ export async function getClaimById(id) {
 
 /**
  * POST equivalent — Send follow-up email for a claim.
+ * Also increments the follow-up counter and records the timestamp.
  */
 export async function sendEmail(claimId) {
     await sleep(800) // simulate email sending
@@ -100,9 +101,16 @@ export async function sendEmail(claimId) {
     if (idx === -1) throw new Error('Claim not found')
 
     claims[idx].emailSent = true
+    claims[idx].followUps = (claims[idx].followUps || 0) + 1
+    claims[idx].lastFollowUp = new Date().toISOString()
     saveStoredClaims(claims)
 
-    return { success: true, message: `Email sent to ${claims[idx].insuranceEmail}` }
+    return {
+        success: true,
+        message: `Email sent to ${claims[idx].insuranceEmail}`,
+        followUps: claims[idx].followUps,
+        lastFollowUp: claims[idx].lastFollowUp,
+    }
 }
 
 /**
