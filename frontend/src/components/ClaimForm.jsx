@@ -67,6 +67,7 @@ const initialForm = {
     daysPending: '',
     insuranceCompany: '',
     insuranceEmail: '',
+    insurancePhone: '',
 }
 
 export default function ClaimForm({ onSubmit, isSubmitting }) {
@@ -170,6 +171,21 @@ export default function ClaimForm({ onSubmit, isSubmitting }) {
                             value={form.insuranceEmail}
                             onChange={handleChange}
                             required
+                        />
+                    </div>
+
+                    <div style={styles.fieldGroup}>
+                        <label htmlFor="insurancePhone">
+                            Insurance Phone
+                            <span style={{ fontWeight: 400, textTransform: 'none', marginLeft: '0.4rem', opacity: 0.7 }}>(for AI call)</span>
+                        </label>
+                        <input
+                            id="insurancePhone"
+                            name="insurancePhone"
+                            type="tel"
+                            placeholder="e.g. +919876543210"
+                            value={form.insurancePhone}
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
