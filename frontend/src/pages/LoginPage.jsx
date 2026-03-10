@@ -471,7 +471,6 @@ const styles = {
         width: '100%',
     },
     linkBtn: {
-        background: 'none',
         border: 'none',
         cursor: 'pointer',
         fontFamily: 'inherit',

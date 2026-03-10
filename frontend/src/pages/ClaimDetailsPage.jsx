@@ -12,7 +12,7 @@ function FollowUpEmailModal({ claim, userEmail, onSend, onCancel }) {
     const nextFollowUpNum = (claim.followUps ?? 0) + 1
     const defaultSubject = `Follow-up Regarding Claim ID ${claim.id}`
     const defaultBody =
-        `Dear ${claim.insuranceCompany} Team,\n\nGreetings from Health Ledger Healthcare Claims Management.\n\nWe are writing to follow up regarding the status of the following insurance claim.\n\nClaim Details:\nClaim ID: ${claim.id}\nPatient ID: ${claim.patientId}\nClaim Amount: ₹${claim.claimAmount.toLocaleString()}\nDays Pending: ${claim.daysPending}\n\nThis is our follow-up attempt number ${nextFollowUpNum}.\n\nWe kindly request an update regarding the processing status of this claim.\nPlease inform us if any additional documents or actions are required from our side.\n\nBest Regards\nHealth Ledger RCM Team`
+        `Dear ${claim.insuranceCompany} Team,\n\nGreetings from Health Ledger Healthcare Claims Management.\n\nWe are writing to follow up regarding the status of the following insurance claim.\n\nClaim Details:\nClaim ID: ${claim.id}\nPatient ID: ${claim.patientId}\nClaim Amount: ₹${claim.claimAmount.toLocaleString()}\nDays Since Claim: ${claim.daysSinceClaim ?? claim.daysPending ?? 0}\n\nThis is our follow-up attempt number ${nextFollowUpNum}.\n\nWe kindly request an update regarding the processing status of this claim.\nPlease inform us if any additional documents or actions are required from our side.\n\nBest Regards\nHealth Ledger RCM Team`
 
     const [subject, setSubject] = useState(defaultSubject)
     const [body, setBody] = useState(defaultBody)
@@ -436,7 +436,7 @@ export default function ClaimDetailsPage({ onLogout, userEmail }) {
         { label: 'Insurance Email', value: claim.insuranceEmail, mono: true },
         { label: 'Insurance Phone', value: claim.insurancePhone || '—', mono: true },
         { label: 'Claim Amount', value: `₹${claim.claimAmount.toLocaleString()}` },
-        { label: 'Days Pending', value: `${claim.daysPending} days` },
+        { label: 'Days Since Claim', value: `${claim.daysSinceClaim ?? claim.daysPending ?? 0} days` },
         { label: 'Created At', value: formatDate(claim.createdAt) },
     ]
 

@@ -8,7 +8,10 @@ export default function AIInsightsCard({ claims }) {
         const list = []
 
         // 1. Count approaching 60-day limit
-        const approaching60 = claims.filter(c => c.daysPending >= 55 && c.daysPending <= 65 && !c.emailSent)
+        const approaching60 = claims.filter(c => {
+            const d = c.daysSinceClaim ?? c.daysPending ?? 0
+            return d >= 55 && d <= 65 && !c.emailSent
+        })
         if (approaching60.length > 0) {
             list.push({
                 icon: '⚠️',
@@ -45,7 +48,7 @@ export default function AIInsightsCard({ claims }) {
         }
 
         // 4. 90+ day overdue claims
-        const overdue90 = claims.filter(c => c.daysPending > 90)
+        const overdue90 = claims.filter(c => (c.daysSinceClaim ?? c.daysPending ?? 0) > 90)
         if (overdue90.length > 0) {
             list.push({
                 icon: '🔴',
@@ -90,7 +93,7 @@ export default function AIInsightsCard({ claims }) {
         <div style={s.card} className="glass-card" id="widget-ai-insights">
             <div style={s.header}>
                 <div style={s.titleRow}>
-                    <span style={s.widgetIcon}>🤖</span>
+                    <span style={s.widgetIcon}></span>
                     <div>
                         <div style={s.titleFlex}>
                             <span style={s.title}>AI Insights</span>

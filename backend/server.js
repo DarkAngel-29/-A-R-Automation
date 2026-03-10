@@ -11,12 +11,78 @@
 //   GET  /api/twilio-status/:callSid   — frontend polls for result
 // ─────────────────────────────────────────────────────────────
 require('dotenv').config()
+const dns = require('dns')
+dns.setServers(['8.8.8.8', '8.8.4.4'])  // Use Google DNS — local DNS can't resolve Atlas SRV
 const express = require('express')
 const nodemailer = require('nodemailer')
 const cors = require('cors')
+const mongoose = require('mongoose')
+const { execFile } = require('child_process')
+const path = require('path')
 
 const app = express()
 const PORT = process.env.PORT || 3001
+
+// ── MongoDB connection ────────────────────────────────────────
+const MONGODB_URI = process.env.MONGODB_URI
+
+async function connectWithRetry(uri, retries = 3, delayMs = 3000) {
+    const opts = {
+        serverSelectionTimeoutMS: 10000,
+        socketTimeoutMS: 45000,
+        maxPoolSize: 10,
+    }
+    for (let attempt = 1; attempt <= retries; attempt++) {
+        try {
+            await mongoose.connect(uri, opts)
+            console.log('✅ MongoDB connected successfully.')
+            return
+        } catch (err) {
+            const isAuthErr = err.message && err.message.includes('bad auth')
+            const isNetworkErr = err.message && (err.message.includes('ECONNREFUSED') || err.message.includes('ETIMEDOUT') || err.message.includes('ENOTFOUND'))
+
+            if (isAuthErr) {
+                console.error('❌ MongoDB AUTH FAILED — wrong username or password in MONGODB_URI.')
+                console.error('   → Go to https://cloud.mongodb.com → Database Access → Edit user → Reset password')
+                console.error('   → Then update MONGODB_URI in backend/.env with the new password')
+                console.error('   Raw error:', err.message)
+                break // No point retrying an auth error
+            } else if (isNetworkErr) {
+                console.error(`❌ MongoDB network error (attempt ${attempt}/${retries}):`, err.message)
+                console.error('   → Make sure your IP is whitelisted in Atlas: Network Access → Add IP Address → Allow from Anywhere (0.0.0.0/0)')
+                if (attempt < retries) {
+                    console.log(`   ⏳ Retrying in ${delayMs / 1000}s...`)
+                    await new Promise(r => setTimeout(r, delayMs))
+                }
+            } else {
+                console.error(`❌ MongoDB connection failed (attempt ${attempt}/${retries}):`, err.message)
+                if (attempt < retries) {
+                    await new Promise(r => setTimeout(r, delayMs))
+                }
+            }
+        }
+    }
+    console.warn('⚠️  MongoDB unavailable — claim storage will be skipped until connection is fixed.')
+}
+
+if (MONGODB_URI) {
+    connectWithRetry(MONGODB_URI)
+} else {
+    console.warn('⚠️  MONGODB_URI not set — claim storage will be skipped.')
+}
+
+// ── Claim Mongoose schema ─────────────────────────────────────
+const claimSchema = new mongoose.Schema({
+    claim_id: { type: String, required: true, unique: true },
+    claim_amount: { type: Number, required: true },
+    days_pending: { type: Number, required: true },
+    followups_done: { type: Number, required: true },
+    insurance_company: { type: String, required: true },
+    claim_status: { type: String, required: true },
+    priority: { type: String, required: true },
+    created_at: { type: Date, default: Date.now },
+})
+const Claim = mongoose.model('Claim', claimSchema)
 
 // ── Twilio client (optional — configured via .env) ────────────
 let twilioClient = null
@@ -309,20 +375,96 @@ app.get('/api/twilio-status/:callSid', (req, res) => {
     })
 })
 
+// ─────────────────────────────────────────────────────────────
+// ML Prediction Endpoint
+// ─────────────────────────────────────────────────────────────
+
+// Path to the Python predict script
+const PREDICT_SCRIPT = path.resolve(__dirname, '..', 'model_train', 'model', 'predict.py')
+
+/**
+ * POST /api/predict-priority
+ * Body: { claim_amount, days_pending, followups_done, insurance_company, claim_status }
+ * Returns: { success, claim_id, priority }
+ */
+app.post('/api/predict-priority', async (req, res) => {
+    const { claim_amount, days_pending, followups_done, insurance_company, claim_status } = req.body
+
+    // Validate required fields
+    if (claim_amount == null || days_pending == null || followups_done == null || !insurance_company || !claim_status) {
+        return res.status(400).json({
+            success: false,
+            error: 'Missing required fields: claim_amount, days_pending, followups_done, insurance_company, claim_status',
+        })
+    }
+
+    const inputJSON = JSON.stringify({ claim_amount, days_pending, followups_done, insurance_company, claim_status })
+
+    // Shell out to Python predict.py
+    execFile('python', [PREDICT_SCRIPT, inputJSON], { timeout: 30000 }, async (err, stdout, stderr) => {
+        if (err) {
+            console.error('❌ Prediction failed:', err.message, stderr)
+            return res.status(500).json({ success: false, error: 'Prediction failed: ' + (stderr || err.message) })
+        }
+
+        let result
+        try {
+            result = JSON.parse(stdout.trim())
+        } catch (parseErr) {
+            console.error('❌ Failed to parse prediction output:', stdout)
+            return res.status(500).json({ success: false, error: 'Invalid prediction output' })
+        }
+
+        if (result.error) {
+            return res.status(500).json({ success: false, error: result.error })
+        }
+
+        // Generate claim_id
+        const claim_id = 'CLM-' + Date.now()
+
+        // Store in MongoDB (if connected)
+        let savedClaim = null
+        if (mongoose.connection.readyState === 1) {
+            try {
+                savedClaim = await Claim.create({
+                    claim_id,
+                    claim_amount,
+                    days_pending,
+                    followups_done,
+                    insurance_company,
+                    claim_status,
+                    priority: result.priority,
+                })
+                console.log(`📋 Claim stored | ${claim_id} | Priority: ${result.priority}`)
+            } catch (dbErr) {
+                console.error('⚠️  Failed to store claim:', dbErr.message)
+            }
+        }
+
+        res.json({
+            success: true,
+            claim_id,
+            priority: result.priority,
+            stored: !!savedClaim,
+        })
+    })
+})
+
 // ── Health check ──────────────────────────────────────────────
 app.get('/api/health', (_req, res) => {
     res.json({
         status: 'ok',
         service: 'Health Ledger Backend',
         twilio: twilioClient ? 'configured' : 'not configured (simulation mode)',
+        mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
     })
 })
 
 // ── Start server ──────────────────────────────────────────────
 app.listen(PORT, () => {
     console.log(`\n🚀 Health Ledger backend running at http://localhost:${PORT}`)
-    console.log(`   Email:  POST http://localhost:${PORT}/api/send-email`)
-    console.log(`   Call:   POST http://localhost:${PORT}/api/twilio-call`)
-    console.log(`   TwiML:  GET  http://localhost:${PORT}/api/twiml/:claimId`)
-    console.log(`   Gather: POST http://localhost:${PORT}/api/twilio-gather/:claimId\n`)
+    console.log(`   Email:    POST http://localhost:${PORT}/api/send-email`)
+    console.log(`   Call:     POST http://localhost:${PORT}/api/twilio-call`)
+    console.log(`   Predict:  POST http://localhost:${PORT}/api/predict-priority`)
+    console.log(`   Health:   GET  http://localhost:${PORT}/api/health\n`)
 })

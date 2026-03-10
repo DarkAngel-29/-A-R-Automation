@@ -2,7 +2,7 @@ import React from 'react'
 
 /**
  * AgingChart — pure CSS bar chart for AR aging buckets.
- * Buckets: 0-30, 31-60, 61-90, 90+ days based on claim.daysPending
+ * Buckets: 0-30, 31-60, 61-90, 90+ days based on claim.daysSinceClaim
  */
 export default function AgingChart({ claims }) {
     const buckets = [
@@ -14,7 +14,10 @@ export default function AgingChart({ claims }) {
 
     const counts = buckets.map(b => ({
         ...b,
-        count: claims.filter(c => c.daysPending >= b.range[0] && c.daysPending <= b.range[1]).length,
+        count: claims.filter(c => {
+            const d = c.daysSinceClaim ?? c.daysPending ?? 0
+            return d >= b.range[0] && d <= b.range[1]
+        }).length,
     }))
 
     const max = Math.max(...counts.map(b => b.count), 1)

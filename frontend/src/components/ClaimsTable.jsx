@@ -177,7 +177,7 @@ export default function ClaimsTable({ claims, onViewClaim, onRemoveClaim, highli
                                     <th style={styles.th}>Claim ID</th>
                                     <th style={styles.th}>Patient ID</th>
                                     <th style={styles.th}>Amount</th>
-                                    <th style={styles.th}>Days Pending</th>
+                                    <th style={styles.th}>Days Since Claim</th>
                                     <th style={styles.th}>Insurance</th>
                                     <th style={styles.th}>Priority</th>
                                     <th style={styles.th}>Status</th>
@@ -219,7 +219,7 @@ export default function ClaimsTable({ claims, onViewClaim, onRemoveClaim, highli
                                             <td style={{ ...styles.td, ...styles.amount }}>
                                                 ₹{claim.claimAmount.toLocaleString()}
                                             </td>
-                                            <td style={styles.td}>{claim.daysPending}</td>
+                                            <td style={styles.td}>{claim.daysSinceClaim ?? claim.daysPending ?? 0}</td>
                                             <td style={styles.td}>{claim.insuranceCompany}</td>
                                             <td style={styles.td}>
                                                 <PriorityBadge priority={claim.priority} />

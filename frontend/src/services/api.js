@@ -21,8 +21,37 @@ function saveStoredClaims(claims) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(claims))
 }
 
-function predictPriority(claimAmount, daysPending) {
-    const score = (claimAmount / 1000) * 0.4 + daysPending * 0.6
+/**
+ * Compute days since claim was created using real calendar days.
+ * Formula: floor((today - claim_created_date) / ms_per_day)
+ * Falls back to stored daysSinceClaim if no creation date.
+ */
+function computeDaysSinceClaim(claim) {
+    const creationDate = claim.claim_created_date || claim.createdAt
+    if (!creationDate) return claim.daysSinceClaim ?? claim.daysPending ?? 0
+    const msPerDay = 1000 * 60 * 60 * 24
+    const diff = Math.floor((Date.now() - new Date(creationDate).getTime()) / msPerDay)
+    return Math.max(0, diff)
+}
+
+/**
+ * Enrich a claim by recomputing daysSinceClaim from claim_created_date.
+ * Also keeps the days_pending alias in sync for ML model compatibility.
+ */
+function enrichClaim(claim) {
+    if (!claim) return claim
+    const days = computeDaysSinceClaim(claim)
+    return {
+        ...claim,
+        daysSinceClaim: days,
+        days_pending: days,   // ML model compatibility alias
+    }
+}
+
+function predictPriority(claimAmount, daysSinceClaim) {
+    // Map days_since_claim to days_pending internally for ML model compatibility
+    const days_pending = daysSinceClaim
+    const score = (claimAmount / 1000) * 0.4 + days_pending * 0.6
     if (score > 30) return 'High'
     if (score > 12) return 'Medium'
     return 'Low'
@@ -46,21 +75,31 @@ function makeLogEntry(type, description, extra = {}) {
 /**
  * POST — Generate a new claim with activity log initialized.
  */
-export async function generateClaim({ patientId, claimAmount, daysPending, insuranceCompany, insuranceEmail, insurancePhone }) {
+export async function generateClaim({ patientId, claimAmount, daysSinceClaim, claim_created_date, insuranceCompany, insuranceEmail, insurancePhone }) {
     await sleep(600)
 
     claimCounter += 1
     localStorage.setItem('rcm_claim_counter', String(claimCounter))
 
-    const priority = predictPriority(Number(claimAmount), Number(daysPending))
-    const now = new Date().toISOString()
+    // Use the date the form was opened (passed by ClaimForm) as the canonical
+    // creation date so auto-increment works across real calendar days.
+    // Falls back to right now if the form didn't provide one.
+    const now = claim_created_date || new Date().toISOString()
+    // Manual override: the value the user typed into the Days Since Claim field
+    const manualOverride = Number(daysSinceClaim)
+    const priority = predictPriority(Number(claimAmount), manualOverride)
     const nextDue = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString()
 
     const newClaim = {
         id: `CLM-${claimCounter}`,
         patientId,
         claimAmount: Number(claimAmount),
-        daysPending: Number(daysPending),
+        // claim_created_date is the anchor for auto-increment computation
+        claim_created_date: now,
+        // Also store the user's manual value at creation time
+        daysSinceClaim: manualOverride,
+        // ML model compatibility alias
+        days_pending: manualOverride,
         insuranceCompany,
         insuranceEmail,
         insurancePhone: insurancePhone || '',
@@ -82,19 +121,22 @@ export async function generateClaim({ patientId, claimAmount, daysPending, insur
     claims.unshift(newClaim)
     saveStoredClaims(claims)
 
-    return newClaim
+    // Return the enriched version so the UI shows the live computed value
+    return enrichClaim(newClaim)
 }
 
 /**
  * GET — Retrieve all claims.
+ * Recomputes daysSinceClaim from claim_created_date for every claim.
  */
 export async function getClaims() {
     await sleep(300)
-    return getStoredClaims()
+    return getStoredClaims().map(enrichClaim)
 }
 
 /**
  * GET — Retrieve a single claim by ID.
+ * Recomputes daysSinceClaim from claim_created_date.
  */
 export async function getClaimById(id) {
     await sleep(250)
@@ -103,7 +145,7 @@ export async function getClaimById(id) {
     if (!claim) throw new Error(`Claim ${id} not found`)
     // Ensure legacy claims without activity_log get an empty array
     if (!claim.activity_log) claim.activity_log = []
-    return claim
+    return enrichClaim(claim)
 }
 
 /**

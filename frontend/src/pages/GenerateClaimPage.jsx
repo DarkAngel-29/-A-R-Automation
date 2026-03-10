@@ -1,14 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import Navbar from '../components/Navbar.jsx'
 import ClaimForm from '../components/ClaimForm.jsx'
+import LivePriorityPanel from '../components/LivePriorityPanel.jsx'
 import { generateClaim } from '../services/api.js'
 
 export default function GenerateClaimPage({ onLogout }) {
     const navigate = useNavigate()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [lastClaim, setLastClaim] = useState(null)
+    const [liveForm, setLiveForm] = useState({ claimAmount: '', daysSinceClaim: 0 })
+    const [livePriority, setLivePriority] = useState(null)
+
+    /* Compute priority using the same score formula as api.js */
+    const handleFormChange = useCallback(({ claimAmount, daysSinceClaim }) => {
+        setLiveForm({ claimAmount, daysSinceClaim })
+        const amt = Number(claimAmount)
+        const days = Number(daysSinceClaim)
+        if (claimAmount !== '' && daysSinceClaim !== '' && !isNaN(amt) && !isNaN(days) && amt > 0) {
+            const score = (amt / 1000) * 0.4 + days * 0.6
+            if (score > 30) setLivePriority('High')
+            else if (score > 12) setLivePriority('Medium')
+            else setLivePriority('Low')
+        } else {
+            setLivePriority(null)
+        }
+    }, [])
 
     const handleGenerateClaim = async (formData) => {
         setIsSubmitting(true)
@@ -51,7 +69,12 @@ export default function GenerateClaimPage({ onLogout }) {
                 <div style={styles.layout}>
                     {/* Form column */}
                     <div style={styles.formColumn}>
-                        <ClaimForm onSubmit={handleGenerateClaim} isSubmitting={isSubmitting} />
+                        <ClaimForm
+                            onSubmit={handleGenerateClaim}
+                            isSubmitting={isSubmitting}
+                            onFormChange={handleFormChange}
+                            predictedPriority={livePriority}
+                        />
                     </div>
 
                     {/* Result / sidebar column */}
@@ -75,8 +98,8 @@ export default function GenerateClaimPage({ onLogout }) {
                                     <span style={styles.resultVal}>₹{lastClaim.claimAmount.toLocaleString()}</span>
                                 </div>
                                 <div style={styles.resultRow}>
-                                    <span style={styles.resultKey}>Days Pending</span>
-                                    <span style={styles.resultVal}>{lastClaim.daysPending}</span>
+                                    <span style={styles.resultKey}>Days Since Claim</span>
+                                    <span style={styles.resultVal}>{lastClaim.daysSinceClaim}</span>
                                 </div>
                                 <div style={styles.resultRow}>
                                     <span style={styles.resultKey}>AI Priority</span>
@@ -109,24 +132,10 @@ export default function GenerateClaimPage({ onLogout }) {
                                 </div>
                             </div>
                         ) : (
-                            <div className="glass-card" style={styles.infoCard}>
-                                <div style={styles.infoIcon}>🤖</div>
-                                <div style={styles.infoTitle}>AI Priority Engine</div>
-                                <p style={styles.infoText}>
-                                    Our model scores each claim based on the <strong>claim amount</strong> and <strong>days pending</strong> to assign a priority level automatically.
-                                </p>
-                                <div style={styles.priorityLegend}>
-                                    {[
-                                        { color: 'var(--priority-high)', bg: 'var(--priority-high-bg)', label: 'High' },
-                                        { color: 'var(--priority-medium)', bg: 'var(--priority-medium-bg)', label: 'Medium' },
-                                        { color: 'var(--priority-low)', bg: 'var(--priority-low-bg)', label: 'Low' },
-                                    ].map(p => (
-                                        <div key={p.label} style={{ ...styles.legendItem, background: p.bg, color: p.color }}>
-                                            {p.label}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                            <LivePriorityPanel
+                                claimAmount={liveForm.claimAmount}
+                                daysSinceClaim={liveForm.daysSinceClaim}
+                            />
                         )}
                     </div>
                 </div>
@@ -193,22 +202,4 @@ const styles = {
     resultKey: { fontSize: '0.78rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 },
     resultVal: { fontSize: '0.88rem', color: 'var(--text-primary)', fontWeight: 600 },
     resultActions: { display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' },
-    infoCard: {
-        padding: '1.75rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        gap: '0.75rem',
-    },
-    infoIcon: { fontSize: '2.5rem' },
-    infoTitle: { fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)' },
-    infoText: { fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.6 },
-    priorityLegend: { display: 'flex', gap: '0.5rem', marginTop: '0.5rem' },
-    legendItem: {
-        padding: '0.3rem 0.9rem',
-        borderRadius: 'var(--radius-full)',
-        fontSize: '0.78rem',
-        fontWeight: 700,
-    },
 }

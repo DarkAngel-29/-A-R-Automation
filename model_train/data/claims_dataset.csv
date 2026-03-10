@@ -1,0 +1,1001 @@
+claim_id,patient_id,claim_amount,days_pending,followups_done,insurance_company,claim_status,priority
+CLM-1000,PAT-1852,5103,79,0,Aetna,Under Review,Low
+CLM-1001,PAT-1303,103032,5,1,UnitedHealth,Denied,Medium
+CLM-1002,PAT-1841,46382,30,0,BlueCross,Under Review,Low
+CLM-1003,PAT-1101,99323,27,2,BlueCross,Under Review,Low
+CLM-1004,PAT-1083,47944,19,3,Cigna,Denied,Medium
+CLM-1005,PAT-1130,96047,49,4,Humana,Pending,Medium
+CLM-1006,PAT-1627,131938,18,2,Cigna,Denied,High
+CLM-1007,PAT-1074,147773,85,3,UnitedHealth,Under Review,High
+CLM-1008,PAT-1159,26297,52,3,UnitedHealth,Denied,Medium
+CLM-1009,PAT-1378,96202,9,1,BlueCross,Denied,Medium
+CLM-1010,PAT-1756,58443,32,5,Cigna,Under Review,Medium
+CLM-1011,PAT-1059,104316,87,1,Humana,Under Review,Medium
+CLM-1012,PAT-1869,55533,88,0,Aetna,Pending,Low
+CLM-1013,PAT-1285,159019,19,2,UnitedHealth,Pending,Medium
+CLM-1014,PAT-1660,28323,87,1,Aetna,Pending,Low
+CLM-1015,PAT-1486,105331,63,4,BlueCross,Under Review,High
+CLM-1016,PAT-1579,48932,28,4,Cigna,Denied,Medium
+CLM-1017,PAT-1750,10387,20,5,Humana,Under Review,Medium
+CLM-1018,PAT-1479,70877,55,2,Cigna,Under Review,Medium
+CLM-1019,PAT-1343,90605,34,5,Humana,Pending,Medium
+CLM-1020,PAT-1505,141372,5,5,Aetna,Pending,Medium
+CLM-1021,PAT-1735,165205,27,5,BlueCross,Pending,Medium
+CLM-1022,PAT-1053,142826,19,2,Aetna,Under Review,Medium
+CLM-1023,PAT-1292,45240,87,5,UnitedHealth,Under Review,High
+CLM-1024,PAT-1615,151961,2,2,BlueCross,Pending,Medium
+CLM-1025,PAT-1709,31457,28,4,UnitedHealth,Denied,Medium
+CLM-1026,PAT-1848,58485,7,3,Humana,Under Review,Low
+CLM-1027,PAT-1080,167431,77,4,Aetna,Under Review,High
+CLM-1028,PAT-1144,64875,51,3,Cigna,Denied,High
+CLM-1029,PAT-1382,119886,90,4,Humana,Pending,Medium
+CLM-1030,PAT-1474,48261,3,0,Humana,Under Review,Low
+CLM-1031,PAT-1429,10963,53,0,UnitedHealth,Under Review,Low
+CLM-1032,PAT-1881,64504,64,0,Aetna,Pending,Low
+CLM-1033,PAT-1465,114596,70,1,Humana,Denied,High
+CLM-1034,PAT-1267,97794,20,4,BlueCross,Pending,Medium
+CLM-1035,PAT-1164,138907,32,5,Humana,Under Review,High
+CLM-1036,PAT-1579,119541,62,5,Humana,Under Review,High
+CLM-1037,PAT-1843,63199,21,1,Aetna,Under Review,Medium
+CLM-1038,PAT-1309,117435,24,4,Cigna,Denied,Medium
+CLM-1039,PAT-1020,174734,57,4,Aetna,Pending,Medium
+CLM-1040,PAT-1647,85464,84,0,Humana,Denied,Medium
+CLM-1041,PAT-1807,119807,15,4,Cigna,Pending,Medium
+CLM-1042,PAT-1261,39959,30,4,Humana,Pending,Low
+CLM-1043,PAT-1026,131883,46,5,BlueCross,Denied,High
+CLM-1044,PAT-1045,163102,50,3,Cigna,Denied,High
+CLM-1045,PAT-1512,172137,28,1,Humana,Pending,Low
+CLM-1046,PAT-1716,171737,67,3,Cigna,Denied,High
+CLM-1047,PAT-1696,157971,89,5,UnitedHealth,Under Review,High
+CLM-1048,PAT-1279,112054,59,1,Humana,Under Review,Medium
+CLM-1049,PAT-1165,50903,1,3,UnitedHealth,Under Review,Medium
+CLM-1050,PAT-1365,147116,89,4,UnitedHealth,Pending,High
+CLM-1051,PAT-1258,75887,82,3,Cigna,Denied,High
+CLM-1052,PAT-1322,68639,82,1,UnitedHealth,Under Review,Medium
+CLM-1053,PAT-1730,21955,4,4,Cigna,Pending,Medium
+CLM-1054,PAT-1476,121671,35,2,Aetna,Under Review,Medium
+CLM-1055,PAT-1171,130048,21,4,Cigna,Under Review,Medium
+CLM-1056,PAT-1221,114502,57,0,Humana,Denied,Medium
+CLM-1057,PAT-1789,18001,10,4,Aetna,Denied,Medium
+CLM-1058,PAT-1641,32568,14,2,Cigna,Pending,Low
+CLM-1059,PAT-1291,14638,53,2,UnitedHealth,Pending,Low
+CLM-1060,PAT-1388,20259,2,1,UnitedHealth,Under Review,Low
+CLM-1061,PAT-1181,43587,24,4,UnitedHealth,Pending,Low
+CLM-1062,PAT-1346,27518,48,2,Cigna,Under Review,Medium
+CLM-1063,PAT-1455,28295,10,1,Aetna,Under Review,Low
+CLM-1064,PAT-1778,116502,87,4,Humana,Under Review,High
+CLM-1065,PAT-1687,75576,65,5,Aetna,Pending,Medium
+CLM-1066,PAT-1202,27417,59,3,Humana,Pending,Low
+CLM-1067,PAT-1306,89785,68,5,Aetna,Denied,High
+CLM-1068,PAT-1431,39141,44,3,BlueCross,Under Review,Medium
+CLM-1069,PAT-1201,55931,49,1,Aetna,Denied,Medium
+CLM-1070,PAT-1809,139084,51,0,UnitedHealth,Denied,High
+CLM-1071,PAT-1687,54864,88,1,UnitedHealth,Under Review,Medium
+CLM-1072,PAT-1836,99833,20,1,BlueCross,Under Review,Medium
+CLM-1073,PAT-1455,53615,65,0,BlueCross,Under Review,Medium
+CLM-1074,PAT-1063,8020,4,5,BlueCross,Denied,Medium
+CLM-1075,PAT-1132,56321,61,5,Cigna,Under Review,High
+CLM-1076,PAT-1103,125079,10,0,Humana,Denied,Medium
+CLM-1077,PAT-1432,127942,90,0,Humana,Denied,High
+CLM-1078,PAT-1359,19761,50,4,UnitedHealth,Denied,High
+CLM-1079,PAT-1106,143916,42,3,UnitedHealth,Denied,High
+CLM-1080,PAT-1664,123432,18,1,BlueCross,Denied,Medium
+CLM-1081,PAT-1091,123824,15,0,Humana,Denied,Medium
+CLM-1082,PAT-1102,111602,60,5,BlueCross,Denied,High
+CLM-1083,PAT-1074,63702,57,1,BlueCross,Pending,Low
+CLM-1084,PAT-1532,140193,76,0,Cigna,Denied,High
+CLM-1085,PAT-1848,56465,53,3,BlueCross,Denied,Medium
+CLM-1086,PAT-1872,26472,40,4,BlueCross,Denied,High
+CLM-1087,PAT-1326,98195,13,1,Humana,Pending,Low
+CLM-1088,PAT-1759,93647,55,2,Aetna,Under Review,Medium
+CLM-1089,PAT-1406,173885,21,2,BlueCross,Under Review,Medium
+CLM-1090,PAT-1115,126462,20,5,Humana,Denied,High
+CLM-1091,PAT-1897,5539,27,3,UnitedHealth,Denied,Medium
+CLM-1092,PAT-1471,163386,19,4,Humana,Denied,High
+CLM-1093,PAT-1378,91249,63,1,Humana,Under Review,Medium
+CLM-1094,PAT-1193,151770,31,0,Cigna,Pending,Medium
+CLM-1095,PAT-1289,161625,69,1,Aetna,Pending,Medium
+CLM-1096,PAT-1260,37131,80,0,Aetna,Denied,Medium
+CLM-1097,PAT-1827,145918,1,0,UnitedHealth,Pending,Low
+CLM-1098,PAT-1283,167993,77,2,BlueCross,Under Review,High
+CLM-1099,PAT-1011,31110,37,2,UnitedHealth,Denied,Medium
+CLM-1100,PAT-1426,61054,54,3,Cigna,Pending,Medium
+CLM-1101,PAT-1825,44789,37,2,Cigna,Under Review,Medium
+CLM-1102,PAT-1601,139834,51,4,BlueCross,Under Review,High
+CLM-1103,PAT-1029,157273,47,4,UnitedHealth,Under Review,High
+CLM-1104,PAT-1566,20374,52,4,UnitedHealth,Pending,Medium
+CLM-1105,PAT-1406,84167,85,4,BlueCross,Denied,High
+CLM-1106,PAT-1287,147216,5,5,BlueCross,Under Review,High
+CLM-1107,PAT-1851,7895,23,0,Aetna,Pending,Low
+CLM-1108,PAT-1128,146768,18,5,UnitedHealth,Denied,High
+CLM-1109,PAT-1398,27940,28,2,Cigna,Denied,Medium
+CLM-1110,PAT-1325,17835,64,5,Cigna,Denied,High
+CLM-1111,PAT-1397,118663,71,0,UnitedHealth,Pending,Low
+CLM-1112,PAT-1372,64715,56,3,Humana,Pending,Medium
+CLM-1113,PAT-1775,142516,33,4,Humana,Under Review,High
+CLM-1114,PAT-1261,132065,49,2,Humana,Denied,High
+CLM-1115,PAT-1655,159155,15,2,Aetna,Under Review,Medium
+CLM-1116,PAT-1162,137887,73,1,Cigna,Denied,High
+CLM-1117,PAT-1737,35325,25,0,BlueCross,Under Review,Low
+CLM-1118,PAT-1036,25064,7,5,Aetna,Denied,Medium
+CLM-1119,PAT-1740,61162,72,0,Cigna,Denied,Medium
+CLM-1120,PAT-1355,97604,45,2,Cigna,Under Review,Medium
+CLM-1121,PAT-1657,115301,59,5,Humana,Pending,Medium
+CLM-1122,PAT-1145,62854,89,1,Cigna,Pending,Medium
+CLM-1123,PAT-1109,126793,33,5,Aetna,Pending,High
+CLM-1124,PAT-1062,141484,35,0,UnitedHealth,Under Review,Medium
+CLM-1125,PAT-1645,142193,30,0,Aetna,Denied,Medium
+CLM-1126,PAT-1297,123541,54,1,BlueCross,Under Review,Medium
+CLM-1127,PAT-1715,25313,58,4,BlueCross,Under Review,Medium
+CLM-1128,PAT-1827,45380,31,3,Humana,Under Review,Medium
+CLM-1129,PAT-1369,173455,70,4,UnitedHealth,Pending,High
+CLM-1130,PAT-1355,148664,86,2,Cigna,Denied,High
+CLM-1131,PAT-1671,118092,71,4,UnitedHealth,Denied,High
+CLM-1132,PAT-1761,135732,50,0,Humana,Denied,High
+CLM-1133,PAT-1899,157657,49,2,Cigna,Under Review,Medium
+CLM-1134,PAT-1305,38460,9,5,UnitedHealth,Pending,Medium
+CLM-1135,PAT-1038,35493,41,2,Humana,Pending,Low
+CLM-1136,PAT-1806,75806,11,4,Cigna,Denied,Medium
+CLM-1137,PAT-1780,135515,2,5,Humana,Under Review,High
+CLM-1138,PAT-1156,154167,35,2,BlueCross,Under Review,Medium
+CLM-1139,PAT-1343,19119,89,4,UnitedHealth,Denied,High
+CLM-1140,PAT-1689,74285,78,4,Cigna,Denied,High
+CLM-1141,PAT-1872,48631,56,3,Aetna,Under Review,Medium
+CLM-1142,PAT-1768,91063,55,3,Humana,Denied,High
+CLM-1143,PAT-1714,111217,82,5,Cigna,Pending,Medium
+CLM-1144,PAT-1563,45307,47,2,UnitedHealth,Pending,Low
+CLM-1145,PAT-1669,82044,8,5,Humana,Denied,High
+CLM-1146,PAT-1067,44164,68,2,BlueCross,Under Review,Medium
+CLM-1147,PAT-1081,17804,79,5,Aetna,Denied,High
+CLM-1148,PAT-1485,60260,82,4,Aetna,Pending,Medium
+CLM-1149,PAT-1093,70615,44,2,Cigna,Denied,High
+CLM-1150,PAT-1090,130723,32,3,BlueCross,Pending,Medium
+CLM-1151,PAT-1500,17401,51,4,Cigna,Pending,Medium
+CLM-1152,PAT-1326,19609,5,2,BlueCross,Pending,Low
+CLM-1153,PAT-1384,165920,37,5,BlueCross,Under Review,High
+CLM-1154,PAT-1303,154137,4,3,UnitedHealth,Pending,Medium
+CLM-1155,PAT-1671,30459,72,5,Cigna,Pending,Medium
+CLM-1156,PAT-1005,10006,33,2,UnitedHealth,Under Review,Medium
+CLM-1157,PAT-1853,6008,20,1,Aetna,Denied,Medium
+CLM-1158,PAT-1320,158541,45,3,Humana,Pending,Medium
+CLM-1159,PAT-1445,103980,6,4,Cigna,Under Review,Medium
+CLM-1160,PAT-1331,35115,58,0,Humana,Pending,Low
+CLM-1161,PAT-1611,132482,38,0,UnitedHealth,Pending,Medium
+CLM-1162,PAT-1406,50765,32,1,UnitedHealth,Denied,Medium
+CLM-1163,PAT-1861,170869,16,5,UnitedHealth,Pending,Medium
+CLM-1164,PAT-1576,53935,24,1,UnitedHealth,Denied,Medium
+CLM-1165,PAT-1324,85557,61,4,Humana,Denied,High
+CLM-1166,PAT-1406,151343,20,1,Cigna,Denied,Medium
+CLM-1167,PAT-1139,55890,39,4,Cigna,Pending,Medium
+CLM-1168,PAT-1430,130055,84,3,Humana,Pending,Medium
+CLM-1169,PAT-1282,47264,30,5,UnitedHealth,Denied,Medium
+CLM-1170,PAT-1608,15805,63,2,Aetna,Denied,Medium
+CLM-1171,PAT-1385,150222,18,2,Aetna,Pending,Medium
+CLM-1172,PAT-1143,22286,1,5,Humana,Pending,Medium
+CLM-1173,PAT-1188,67098,14,3,Humana,Denied,Medium
+CLM-1174,PAT-1145,168173,70,5,UnitedHealth,Pending,High
+CLM-1175,PAT-1450,135201,22,0,Aetna,Denied,Medium
+CLM-1176,PAT-1055,23026,48,5,Humana,Pending,Medium
+CLM-1177,PAT-1104,124832,64,1,Humana,Pending,Medium
+CLM-1178,PAT-1048,115980,90,4,Aetna,Pending,Medium
+CLM-1179,PAT-1636,144251,13,1,UnitedHealth,Under Review,Medium
+CLM-1180,PAT-1755,62054,72,5,BlueCross,Denied,High
+CLM-1181,PAT-1169,6582,38,3,Aetna,Denied,High
+CLM-1182,PAT-1301,79863,18,0,BlueCross,Under Review,Low
+CLM-1183,PAT-1786,101001,16,2,UnitedHealth,Pending,Low
+CLM-1184,PAT-1346,159524,24,2,UnitedHealth,Pending,Medium
+CLM-1185,PAT-1193,86940,49,5,BlueCross,Denied,High
+CLM-1186,PAT-1442,110875,78,0,BlueCross,Pending,Low
+CLM-1187,PAT-1392,128778,45,3,Cigna,Under Review,Medium
+CLM-1188,PAT-1663,68977,44,2,Aetna,Denied,High
+CLM-1189,PAT-1339,32273,86,5,BlueCross,Denied,High
+CLM-1190,PAT-1336,160552,58,0,Humana,Under Review,Medium
+CLM-1191,PAT-1266,101757,86,5,UnitedHealth,Pending,Medium
+CLM-1192,PAT-1118,131345,25,4,Aetna,Under Review,Medium
+CLM-1193,PAT-1644,75307,13,4,Humana,Denied,High
+CLM-1194,PAT-1646,134876,47,0,Humana,Pending,Medium
+CLM-1195,PAT-1421,73948,21,1,Humana,Denied,Medium
+CLM-1196,PAT-1243,9189,2,1,UnitedHealth,Pending,Low
+CLM-1197,PAT-1835,82657,69,0,Aetna,Denied,Medium
+CLM-1198,PAT-1575,9160,5,3,UnitedHealth,Denied,Medium
+CLM-1199,PAT-1540,174322,69,1,Cigna,Under Review,Medium
+CLM-1200,PAT-1541,48517,86,5,UnitedHealth,Denied,High
+CLM-1201,PAT-1233,32310,51,1,BlueCross,Under Review,Low
+CLM-1202,PAT-1418,10986,68,5,Aetna,Under Review,High
+CLM-1203,PAT-1844,90547,32,1,Aetna,Under Review,Medium
+CLM-1204,PAT-1065,75549,78,4,Aetna,Pending,Medium
+CLM-1205,PAT-1429,115615,72,2,Cigna,Pending,Medium
+CLM-1206,PAT-1673,90846,18,2,Cigna,Under Review,Medium
+CLM-1207,PAT-1036,85273,38,5,Humana,Pending,Medium
+CLM-1208,PAT-1438,14717,85,1,UnitedHealth,Denied,Medium
+CLM-1209,PAT-1684,71238,16,0,Aetna,Pending,Low
+CLM-1210,PAT-1808,96980,75,1,BlueCross,Under Review,Medium
+CLM-1211,PAT-1187,104959,81,1,BlueCross,Denied,High
+CLM-1212,PAT-1240,19264,1,0,UnitedHealth,Pending,Low
+CLM-1213,PAT-1705,50187,2,3,Cigna,Denied,Medium
+CLM-1214,PAT-1281,164157,85,0,UnitedHealth,Under Review,Medium
+CLM-1215,PAT-1387,80959,33,0,Humana,Under Review,Low
+CLM-1216,PAT-1427,98083,77,2,Humana,Pending,Medium
+CLM-1217,PAT-1676,19133,51,3,Humana,Denied,High
+CLM-1218,PAT-1265,13019,67,3,Humana,Pending,Medium
+CLM-1219,PAT-1717,92488,10,2,BlueCross,Under Review,Medium
+CLM-1220,PAT-1292,102229,90,4,Humana,Denied,High
+CLM-1221,PAT-1026,106794,42,0,Humana,Under Review,Medium
+CLM-1222,PAT-1539,27204,84,2,Aetna,Denied,High
+CLM-1223,PAT-1449,15983,58,4,Humana,Pending,Medium
+CLM-1224,PAT-1220,128807,67,4,Humana,Pending,High
+CLM-1225,PAT-1431,157432,50,1,Cigna,Denied,Medium
+CLM-1226,PAT-1009,44266,71,2,Cigna,Under Review,Medium
+CLM-1227,PAT-1254,82450,38,2,BlueCross,Under Review,Medium
+CLM-1228,PAT-1403,103042,72,5,UnitedHealth,Pending,High
+CLM-1229,PAT-1718,133854,14,5,BlueCross,Under Review,High
+CLM-1230,PAT-1758,9376,36,2,Aetna,Under Review,Medium
+CLM-1231,PAT-1262,40740,18,4,Humana,Denied,Medium
+CLM-1232,PAT-1301,26133,8,4,UnitedHealth,Denied,Medium
+CLM-1233,PAT-1629,64077,21,3,Humana,Denied,Medium
+CLM-1234,PAT-1033,151659,88,4,Aetna,Denied,High
+CLM-1235,PAT-1168,46012,64,2,UnitedHealth,Denied,High
+CLM-1236,PAT-1900,11424,15,1,Aetna,Under Review,Low
+CLM-1237,PAT-1724,29276,24,2,Humana,Denied,Medium
+CLM-1238,PAT-1088,154022,9,2,UnitedHealth,Denied,High
+CLM-1239,PAT-1483,119836,90,3,Cigna,Pending,Medium
+CLM-1240,PAT-1161,39775,72,3,Aetna,Denied,High
+CLM-1241,PAT-1014,157225,7,4,UnitedHealth,Under Review,High
+CLM-1242,PAT-1804,154535,64,5,Aetna,Pending,High
+CLM-1243,PAT-1183,167995,47,2,Humana,Denied,High
+CLM-1244,PAT-1788,164894,44,2,Humana,Denied,High
+CLM-1245,PAT-1473,73880,26,3,UnitedHealth,Under Review,Medium
+CLM-1246,PAT-1293,61132,11,0,Cigna,Under Review,Low
+CLM-1247,PAT-1640,5053,67,0,BlueCross,Denied,Medium
+CLM-1248,PAT-1042,53938,14,3,UnitedHealth,Denied,Medium
+CLM-1249,PAT-1704,137263,42,4,UnitedHealth,Under Review,High
+CLM-1250,PAT-1111,80486,59,0,BlueCross,Denied,Medium
+CLM-1251,PAT-1415,153733,7,0,Aetna,Under Review,Medium
+CLM-1252,PAT-1881,157600,45,4,Humana,Pending,Medium
+CLM-1253,PAT-1500,20259,84,2,BlueCross,Under Review,Medium
+CLM-1254,PAT-1834,31377,28,0,Aetna,Pending,Low
+CLM-1255,PAT-1699,33592,45,4,Humana,Denied,High
+CLM-1256,PAT-1133,126160,15,1,Humana,Pending,Low
+CLM-1257,PAT-1362,78684,48,4,Humana,Denied,High
+CLM-1258,PAT-1076,17732,60,3,Aetna,Pending,Low
+CLM-1259,PAT-1182,144370,44,3,BlueCross,Pending,Medium
+CLM-1260,PAT-1645,69387,37,3,Cigna,Pending,Medium
+CLM-1261,PAT-1605,129946,52,3,Aetna,Denied,High
+CLM-1262,PAT-1568,13884,55,5,Cigna,Under Review,Medium
+CLM-1263,PAT-1242,14336,70,3,Cigna,Denied,High
+CLM-1264,PAT-1365,62632,1,4,Aetna,Denied,Medium
+CLM-1265,PAT-1114,126219,45,0,Cigna,Denied,High
+CLM-1266,PAT-1309,43709,5,2,UnitedHealth,Pending,Low
+CLM-1267,PAT-1143,56875,20,0,BlueCross,Pending,Low
+CLM-1268,PAT-1339,133011,11,0,Aetna,Under Review,Medium
+CLM-1269,PAT-1138,138419,26,1,Aetna,Under Review,Medium
+CLM-1270,PAT-1459,49073,28,4,Aetna,Denied,Medium
+CLM-1271,PAT-1194,35300,7,1,Humana,Denied,Medium
+CLM-1272,PAT-1797,117779,69,2,BlueCross,Under Review,Medium
+CLM-1273,PAT-1406,67010,85,4,BlueCross,Pending,Medium
+CLM-1274,PAT-1661,164505,34,2,UnitedHealth,Under Review,Medium
+CLM-1275,PAT-1003,103915,88,4,Cigna,Denied,High
+CLM-1276,PAT-1122,107049,69,0,Humana,Denied,Medium
+CLM-1277,PAT-1710,121623,40,3,Cigna,Under Review,High
+CLM-1278,PAT-1805,12235,49,1,Aetna,Denied,Medium
+CLM-1279,PAT-1365,108496,64,1,Cigna,Denied,Medium
+CLM-1280,PAT-1389,33678,59,4,Aetna,Denied,High
+CLM-1281,PAT-1163,96586,21,0,Cigna,Under Review,Low
+CLM-1282,PAT-1884,74091,27,5,Humana,Pending,Medium
+CLM-1283,PAT-1094,27492,45,3,Humana,Denied,Medium
+CLM-1284,PAT-1857,107908,63,5,Cigna,Under Review,High
+CLM-1285,PAT-1785,32171,60,0,Aetna,Denied,Medium
+CLM-1286,PAT-1576,109464,78,2,UnitedHealth,Pending,Medium
+CLM-1287,PAT-1613,157308,39,5,Aetna,Denied,High
+CLM-1288,PAT-1484,14684,40,3,Humana,Pending,Low
+CLM-1289,PAT-1402,69788,1,0,UnitedHealth,Denied,Medium
+CLM-1290,PAT-1183,63279,87,2,Humana,Under Review,Medium
+CLM-1291,PAT-1495,72488,73,0,Aetna,Denied,Medium
+CLM-1292,PAT-1693,105908,90,3,Aetna,Under Review,High
+CLM-1293,PAT-1673,61740,12,0,UnitedHealth,Under Review,Low
+CLM-1294,PAT-1771,109762,53,3,BlueCross,Denied,High
+CLM-1295,PAT-1381,101211,71,1,Humana,Pending,Medium
+CLM-1296,PAT-1349,90572,2,4,BlueCross,Denied,High
+CLM-1297,PAT-1658,132192,36,0,UnitedHealth,Pending,Low
+CLM-1298,PAT-1047,49675,83,3,Humana,Pending,Medium
+CLM-1299,PAT-1073,23528,48,2,BlueCross,Pending,Low
+CLM-1300,PAT-1474,114791,72,1,UnitedHealth,Under Review,Medium
+CLM-1301,PAT-1651,164033,23,5,UnitedHealth,Denied,High
+CLM-1302,PAT-1405,46206,34,5,Humana,Denied,High
+CLM-1303,PAT-1658,173564,46,0,BlueCross,Denied,Medium
+CLM-1304,PAT-1213,158813,72,0,Cigna,Denied,High
+CLM-1305,PAT-1176,5261,79,3,BlueCross,Denied,High
+CLM-1306,PAT-1899,139731,23,4,Humana,Under Review,Medium
+CLM-1307,PAT-1135,94135,53,0,Aetna,Pending,Low
+CLM-1308,PAT-1222,160304,80,4,Aetna,Under Review,High
+CLM-1309,PAT-1009,110901,48,1,Humana,Denied,Medium
+CLM-1310,PAT-1293,130923,5,3,BlueCross,Denied,High
+CLM-1311,PAT-1082,161899,8,0,UnitedHealth,Pending,Low
+CLM-1312,PAT-1104,106841,38,2,Cigna,Pending,Low
+CLM-1313,PAT-1164,147513,50,1,UnitedHealth,Under Review,Medium
+CLM-1314,PAT-1669,13016,32,5,Cigna,Under Review,Medium
+CLM-1315,PAT-1659,83341,49,1,Humana,Under Review,Medium
+CLM-1316,PAT-1289,130520,30,4,Aetna,Pending,Medium
+CLM-1317,PAT-1824,15631,45,1,Humana,Denied,Medium
+CLM-1318,PAT-1179,83481,41,2,Cigna,Denied,High
+CLM-1319,PAT-1833,145602,81,5,BlueCross,Pending,High
+CLM-1320,PAT-1138,154861,8,3,Aetna,Under Review,Medium
+CLM-1321,PAT-1254,57565,74,3,Humana,Under Review,Medium
+CLM-1322,PAT-1078,103680,36,2,BlueCross,Denied,Medium
+CLM-1323,PAT-1597,123674,48,0,UnitedHealth,Denied,High
+CLM-1324,PAT-1900,172340,89,3,UnitedHealth,Denied,High
+CLM-1325,PAT-1803,134054,23,0,UnitedHealth,Under Review,Medium
+CLM-1326,PAT-1427,9645,1,4,UnitedHealth,Under Review,Medium
+CLM-1327,PAT-1655,125002,49,4,UnitedHealth,Pending,Medium
+CLM-1328,PAT-1845,37824,64,1,UnitedHealth,Under Review,Medium
+CLM-1329,PAT-1575,174690,33,4,UnitedHealth,Under Review,High
+CLM-1330,PAT-1847,161695,8,1,Cigna,Denied,High
+CLM-1331,PAT-1275,11303,76,2,Humana,Pending,Medium
+CLM-1332,PAT-1426,11609,21,2,Humana,Pending,Low
+CLM-1333,PAT-1235,156649,85,0,Aetna,Pending,Medium
+CLM-1334,PAT-1281,31993,36,1,Humana,Under Review,Low
+CLM-1335,PAT-1225,130638,70,4,Aetna,Denied,High
+CLM-1336,PAT-1483,47472,72,1,BlueCross,Under Review,Medium
+CLM-1337,PAT-1150,46699,71,3,Cigna,Denied,High
+CLM-1338,PAT-1199,35309,8,4,Cigna,Under Review,Medium
+CLM-1339,PAT-1858,26332,15,4,Cigna,Under Review,Medium
+CLM-1340,PAT-1512,143319,33,1,BlueCross,Under Review,Medium
+CLM-1341,PAT-1388,51872,1,4,UnitedHealth,Pending,Low
+CLM-1342,PAT-1410,33603,45,0,Humana,Pending,Low
+CLM-1343,PAT-1493,133497,9,1,Cigna,Denied,Medium
+CLM-1344,PAT-1329,62085,63,2,Aetna,Denied,High
+CLM-1345,PAT-1094,117747,45,3,Aetna,Under Review,Medium
+CLM-1346,PAT-1334,123239,7,1,BlueCross,Denied,Medium
+CLM-1347,PAT-1042,24502,72,2,UnitedHealth,Pending,Medium
+CLM-1348,PAT-1321,49273,76,3,Cigna,Denied,High
+CLM-1349,PAT-1682,26299,1,1,Cigna,Pending,Low
+CLM-1350,PAT-1692,119379,7,4,Humana,Under Review,Medium
+CLM-1351,PAT-1574,136547,29,4,Cigna,Pending,Medium
+CLM-1352,PAT-1644,148341,76,1,Aetna,Under Review,High
+CLM-1353,PAT-1465,66671,72,0,UnitedHealth,Denied,Medium
+CLM-1354,PAT-1838,157640,15,1,Humana,Pending,Low
+CLM-1355,PAT-1490,111390,56,2,BlueCross,Denied,Medium
+CLM-1356,PAT-1642,97280,51,1,Cigna,Under Review,Medium
+CLM-1357,PAT-1488,69070,48,1,Humana,Denied,Medium
+CLM-1358,PAT-1854,33701,58,1,UnitedHealth,Pending,Low
+CLM-1359,PAT-1384,81708,24,0,BlueCross,Pending,Low
+CLM-1360,PAT-1495,144549,31,3,Cigna,Denied,High
+CLM-1361,PAT-1028,30701,41,5,Cigna,Pending,Medium
+CLM-1362,PAT-1071,153562,87,3,BlueCross,Under Review,High
+CLM-1363,PAT-1525,68865,86,1,Humana,Under Review,Medium
+CLM-1364,PAT-1757,119715,58,0,UnitedHealth,Pending,Low
+CLM-1365,PAT-1733,127341,10,0,Cigna,Pending,Low
+CLM-1366,PAT-1576,22766,83,2,Aetna,Under Review,Medium
+CLM-1367,PAT-1722,54278,15,2,UnitedHealth,Under Review,Low
+CLM-1368,PAT-1848,39217,80,3,BlueCross,Under Review,Medium
+CLM-1369,PAT-1590,75831,31,5,Aetna,Pending,Medium
+CLM-1370,PAT-1879,6102,29,4,UnitedHealth,Under Review,Medium
+CLM-1371,PAT-1632,8374,11,2,UnitedHealth,Pending,Low
+CLM-1372,PAT-1189,19734,39,4,BlueCross,Under Review,Medium
+CLM-1373,PAT-1739,41804,19,5,Cigna,Pending,Medium
+CLM-1374,PAT-1299,103758,61,0,Aetna,Pending,Low
+CLM-1375,PAT-1385,40176,28,4,BlueCross,Pending,Low
+CLM-1376,PAT-1370,112605,55,1,Humana,Pending,Low
+CLM-1377,PAT-1658,98763,32,5,Aetna,Pending,Medium
+CLM-1378,PAT-1710,121695,2,5,BlueCross,Under Review,High
+CLM-1379,PAT-1672,108119,51,4,Humana,Pending,Medium
+CLM-1380,PAT-1119,93230,64,2,Cigna,Under Review,Medium
+CLM-1381,PAT-1388,109715,9,3,Humana,Under Review,Medium
+CLM-1382,PAT-1220,6655,87,1,UnitedHealth,Pending,Low
+CLM-1383,PAT-1783,170638,37,5,Cigna,Pending,Medium
+CLM-1384,PAT-1632,6836,63,0,Aetna,Under Review,Low
+CLM-1385,PAT-1366,89532,38,0,Aetna,Pending,Low
+CLM-1386,PAT-1323,148043,26,1,UnitedHealth,Denied,Medium
+CLM-1387,PAT-1518,12480,76,3,BlueCross,Denied,High
+CLM-1388,PAT-1202,155063,90,4,UnitedHealth,Under Review,High
+CLM-1389,PAT-1154,26897,85,0,BlueCross,Denied,Medium
+CLM-1390,PAT-1667,71778,12,3,BlueCross,Under Review,Medium
+CLM-1391,PAT-1026,16113,19,4,BlueCross,Denied,Medium
+CLM-1392,PAT-1682,37665,58,0,Aetna,Under Review,Low
+CLM-1393,PAT-1897,85930,52,2,Cigna,Under Review,Medium
+CLM-1394,PAT-1483,170235,48,2,UnitedHealth,Under Review,Medium
+CLM-1395,PAT-1197,64883,87,0,Humana,Under Review,Medium
+CLM-1396,PAT-1754,166424,51,0,BlueCross,Denied,High
+CLM-1397,PAT-1265,151596,72,4,Cigna,Pending,High
+CLM-1398,PAT-1187,143228,80,5,Humana,Pending,High
+CLM-1399,PAT-1014,151831,36,0,BlueCross,Pending,Low
+CLM-1400,PAT-1349,110190,52,1,Cigna,Pending,Low
+CLM-1401,PAT-1213,166395,43,1,Cigna,Pending,Medium
+CLM-1402,PAT-1011,38432,28,5,Cigna,Denied,High
+CLM-1403,PAT-1268,172089,79,2,Cigna,Denied,High
+CLM-1404,PAT-1736,64877,45,0,Cigna,Under Review,Medium
+CLM-1405,PAT-1380,66873,56,4,UnitedHealth,Under Review,Medium
+CLM-1406,PAT-1804,94702,33,0,UnitedHealth,Denied,Medium
+CLM-1407,PAT-1685,152930,79,2,Aetna,Under Review,High
+CLM-1408,PAT-1044,47084,64,5,UnitedHealth,Pending,Medium
+CLM-1409,PAT-1794,155969,51,3,Aetna,Under Review,High
+CLM-1410,PAT-1403,30525,37,2,Humana,Denied,Medium
+CLM-1411,PAT-1400,152841,72,3,UnitedHealth,Denied,High
+CLM-1412,PAT-1773,5892,48,3,BlueCross,Pending,Low
+CLM-1413,PAT-1016,27021,79,0,Cigna,Pending,Low
+CLM-1414,PAT-1351,165896,72,0,Cigna,Denied,High
+CLM-1415,PAT-1647,42639,3,4,Humana,Denied,Medium
+CLM-1416,PAT-1261,39329,35,3,Aetna,Pending,Medium
+CLM-1417,PAT-1495,143992,88,5,Aetna,Denied,High
+CLM-1418,PAT-1186,168681,68,4,BlueCross,Pending,High
+CLM-1419,PAT-1044,128479,66,1,Aetna,Pending,Medium
+CLM-1420,PAT-1667,152906,11,1,Aetna,Under Review,Medium
+CLM-1421,PAT-1454,77685,74,5,UnitedHealth,Under Review,High
+CLM-1422,PAT-1121,27310,19,3,UnitedHealth,Under Review,Medium
+CLM-1423,PAT-1333,82233,90,0,UnitedHealth,Under Review,Medium
+CLM-1424,PAT-1582,155179,66,3,UnitedHealth,Pending,Medium
+CLM-1425,PAT-1790,174426,84,4,Humana,Under Review,High
+CLM-1426,PAT-1557,71195,45,2,Cigna,Denied,Medium
+CLM-1427,PAT-1011,33177,64,5,Aetna,Pending,Medium
+CLM-1428,PAT-1344,142128,70,4,Cigna,Pending,High
+CLM-1429,PAT-1169,137381,6,4,Humana,Under Review,Medium
+CLM-1430,PAT-1368,28408,28,3,Aetna,Under Review,Medium
+CLM-1431,PAT-1315,165469,83,2,UnitedHealth,Under Review,High
+CLM-1432,PAT-1605,22424,61,3,Aetna,Denied,High
+CLM-1433,PAT-1568,75506,35,3,Cigna,Pending,Medium
+CLM-1434,PAT-1541,33386,77,5,Aetna,Denied,High
+CLM-1435,PAT-1298,131789,42,4,Humana,Pending,Medium
+CLM-1436,PAT-1744,106639,21,1,BlueCross,Denied,Medium
+CLM-1437,PAT-1480,144794,26,5,UnitedHealth,Under Review,High
+CLM-1438,PAT-1882,141546,14,3,Aetna,Under Review,Medium
+CLM-1439,PAT-1898,89906,78,3,BlueCross,Denied,High
+CLM-1440,PAT-1829,152211,33,3,BlueCross,Denied,High
+CLM-1441,PAT-1589,21324,51,2,BlueCross,Pending,Low
+CLM-1442,PAT-1460,22538,68,0,BlueCross,Pending,Low
+CLM-1443,PAT-1766,56652,46,1,Aetna,Pending,Low
+CLM-1444,PAT-1187,108705,9,4,Humana,Denied,High
+CLM-1445,PAT-1691,131041,68,5,BlueCross,Denied,High
+CLM-1446,PAT-1494,115103,81,2,Humana,Under Review,Medium
+CLM-1447,PAT-1869,48553,26,1,Cigna,Denied,Medium
+CLM-1448,PAT-1302,44992,15,0,Cigna,Pending,Low
+CLM-1449,PAT-1900,142731,66,0,BlueCross,Denied,High
+CLM-1450,PAT-1122,117050,36,2,Humana,Under Review,Medium
+CLM-1451,PAT-1760,165033,71,2,Humana,Denied,High
+CLM-1452,PAT-1540,43565,34,4,Aetna,Under Review,Medium
+CLM-1453,PAT-1600,104772,57,4,BlueCross,Under Review,Medium
+CLM-1454,PAT-1018,25456,40,5,Aetna,Pending,Medium
+CLM-1455,PAT-1589,167577,83,2,Humana,Denied,High
+CLM-1456,PAT-1773,32799,57,1,UnitedHealth,Pending,Low
+CLM-1457,PAT-1445,60002,34,0,Cigna,Under Review,Medium
+CLM-1458,PAT-1427,36023,67,2,BlueCross,Under Review,Medium
+CLM-1459,PAT-1191,33258,56,4,Aetna,Denied,High
+CLM-1460,PAT-1519,127400,82,5,Humana,Denied,High
+CLM-1461,PAT-1123,129743,45,0,Cigna,Pending,Medium
+CLM-1462,PAT-1050,26458,75,4,Humana,Denied,High
+CLM-1463,PAT-1026,151719,20,1,BlueCross,Denied,Medium
+CLM-1464,PAT-1896,141951,9,0,UnitedHealth,Denied,Medium
+CLM-1465,PAT-1703,30516,5,2,UnitedHealth,Pending,Low
+CLM-1466,PAT-1727,108298,74,4,Cigna,Denied,High
+CLM-1467,PAT-1381,150353,7,3,Aetna,Pending,Medium
+CLM-1468,PAT-1458,118595,40,2,Cigna,Denied,High
+CLM-1469,PAT-1729,165156,28,0,Cigna,Under Review,Medium
+CLM-1470,PAT-1774,44715,89,2,BlueCross,Under Review,Medium
+CLM-1471,PAT-1222,124913,76,1,Humana,Pending,Medium
+CLM-1472,PAT-1576,28496,71,2,Aetna,Under Review,Medium
+CLM-1473,PAT-1793,61868,81,0,Cigna,Denied,Medium
+CLM-1474,PAT-1536,170204,30,4,Aetna,Under Review,Medium
+CLM-1475,PAT-1444,57547,34,3,UnitedHealth,Denied,Medium
+CLM-1476,PAT-1253,156175,59,2,UnitedHealth,Pending,Medium
+CLM-1477,PAT-1094,17648,66,3,BlueCross,Pending,Medium
+CLM-1478,PAT-1293,131676,3,1,Cigna,Under Review,Medium
+CLM-1479,PAT-1256,105639,33,3,UnitedHealth,Denied,High
+CLM-1480,PAT-1876,82607,48,0,UnitedHealth,Under Review,Medium
+CLM-1481,PAT-1088,172229,15,5,BlueCross,Denied,High
+CLM-1482,PAT-1562,72707,78,3,UnitedHealth,Denied,High
+CLM-1483,PAT-1638,93109,58,0,UnitedHealth,Pending,Low
+CLM-1484,PAT-1179,33498,5,2,Humana,Pending,Low
+CLM-1485,PAT-1496,166382,39,4,BlueCross,Under Review,High
+CLM-1486,PAT-1735,62372,53,0,UnitedHealth,Under Review,Medium
+CLM-1487,PAT-1624,96862,67,2,BlueCross,Pending,Medium
+CLM-1488,PAT-1137,111746,27,5,BlueCross,Pending,Medium
+CLM-1489,PAT-1166,67422,35,0,UnitedHealth,Pending,Low
+CLM-1490,PAT-1609,61836,72,0,Aetna,Under Review,Medium
+CLM-1491,PAT-1877,131533,76,5,Aetna,Under Review,High
+CLM-1492,PAT-1495,133241,20,2,Cigna,Under Review,Medium
+CLM-1493,PAT-1222,142970,9,5,BlueCross,Under Review,High
+CLM-1494,PAT-1682,161877,82,0,BlueCross,Denied,High
+CLM-1495,PAT-1526,169770,38,2,Aetna,Under Review,Medium
+CLM-1496,PAT-1379,31549,12,1,Cigna,Pending,Low
+CLM-1497,PAT-1513,41958,4,0,Humana,Pending,Low
+CLM-1498,PAT-1151,51741,38,1,Cigna,Under Review,Low
+CLM-1499,PAT-1825,60555,52,0,Aetna,Pending,Low
+CLM-1500,PAT-1377,104184,17,5,Cigna,Under Review,Medium
+CLM-1501,PAT-1421,130806,44,3,Cigna,Denied,High
+CLM-1502,PAT-1393,33095,73,3,Cigna,Under Review,Medium
+CLM-1503,PAT-1505,106142,64,3,Aetna,Denied,High
+CLM-1504,PAT-1408,143290,35,2,UnitedHealth,Pending,Medium
+CLM-1505,PAT-1879,87116,31,3,Cigna,Pending,Medium
+CLM-1506,PAT-1524,149694,27,4,Humana,Under Review,Medium
+CLM-1507,PAT-1125,56335,43,0,UnitedHealth,Pending,Low
+CLM-1508,PAT-1818,150391,4,3,UnitedHealth,Denied,High
+CLM-1509,PAT-1769,157536,6,1,Humana,Under Review,Medium
+CLM-1510,PAT-1101,155596,89,1,UnitedHealth,Under Review,High
+CLM-1511,PAT-1434,7866,34,5,Humana,Pending,Medium
+CLM-1512,PAT-1694,60619,17,0,UnitedHealth,Denied,Medium
+CLM-1513,PAT-1333,33886,76,5,Aetna,Under Review,High
+CLM-1514,PAT-1289,87624,53,2,BlueCross,Under Review,Medium
+CLM-1515,PAT-1337,15446,56,2,Humana,Under Review,Medium
+CLM-1516,PAT-1565,165528,17,0,BlueCross,Under Review,Medium
+CLM-1517,PAT-1483,92714,25,5,Humana,Denied,High
+CLM-1518,PAT-1876,115952,39,2,UnitedHealth,Pending,Medium
+CLM-1519,PAT-1327,148599,79,0,Cigna,Pending,Medium
+CLM-1520,PAT-1045,57638,70,2,Cigna,Under Review,Medium
+CLM-1521,PAT-1670,52737,88,1,Humana,Denied,Medium
+CLM-1522,PAT-1294,11055,82,5,Cigna,Denied,High
+CLM-1523,PAT-1316,169183,46,2,Cigna,Denied,High
+CLM-1524,PAT-1113,31898,12,2,Aetna,Pending,Low
+CLM-1525,PAT-1225,103202,24,5,UnitedHealth,Pending,Medium
+CLM-1526,PAT-1262,64655,46,2,Aetna,Under Review,Medium
+CLM-1527,PAT-1854,153099,33,3,UnitedHealth,Denied,High
+CLM-1528,PAT-1531,90552,42,2,BlueCross,Denied,Medium
+CLM-1529,PAT-1464,130639,67,3,UnitedHealth,Under Review,High
+CLM-1530,PAT-1434,53261,13,3,UnitedHealth,Under Review,Medium
+CLM-1531,PAT-1574,26371,58,3,Cigna,Pending,Low
+CLM-1532,PAT-1020,21226,44,3,BlueCross,Pending,Low
+CLM-1533,PAT-1288,71039,20,1,BlueCross,Pending,Low
+CLM-1534,PAT-1513,60984,3,5,Aetna,Under Review,Medium
+CLM-1535,PAT-1874,142474,78,1,Humana,Pending,Medium
+CLM-1536,PAT-1805,30009,84,3,Cigna,Under Review,Medium
+CLM-1537,PAT-1017,170958,16,1,Cigna,Pending,Low
+CLM-1538,PAT-1354,18930,29,2,UnitedHealth,Under Review,Low
+CLM-1539,PAT-1594,120733,66,5,Cigna,Pending,High
+CLM-1540,PAT-1172,45607,71,4,BlueCross,Under Review,Medium
+CLM-1541,PAT-1205,5653,22,4,BlueCross,Denied,Medium
+CLM-1542,PAT-1249,73509,30,2,BlueCross,Under Review,Medium
+CLM-1543,PAT-1469,105813,26,2,Cigna,Under Review,Medium
+CLM-1544,PAT-1453,127878,52,0,Aetna,Pending,Medium
+CLM-1545,PAT-1308,69362,77,3,Humana,Pending,Medium
+CLM-1546,PAT-1548,60026,8,0,Humana,Under Review,Low
+CLM-1547,PAT-1662,136299,74,0,Cigna,Under Review,Medium
+CLM-1548,PAT-1251,92632,36,3,BlueCross,Pending,Medium
+CLM-1549,PAT-1522,128903,9,3,BlueCross,Under Review,Medium
+CLM-1550,PAT-1011,166600,42,2,Humana,Pending,Medium
+CLM-1551,PAT-1051,142658,72,4,Cigna,Denied,High
+CLM-1552,PAT-1029,89232,13,1,BlueCross,Under Review,Low
+CLM-1553,PAT-1163,30856,73,2,UnitedHealth,Pending,Medium
+CLM-1554,PAT-1360,99909,56,4,Cigna,Denied,High
+CLM-1555,PAT-1310,111097,29,3,BlueCross,Pending,Low
+CLM-1556,PAT-1487,82286,43,4,Humana,Denied,High
+CLM-1557,PAT-1881,89924,79,0,BlueCross,Under Review,Medium
+CLM-1558,PAT-1141,120277,79,2,UnitedHealth,Pending,Medium
+CLM-1559,PAT-1713,102507,18,1,Cigna,Pending,Low
+CLM-1560,PAT-1687,170035,73,1,BlueCross,Denied,High
+CLM-1561,PAT-1117,71032,41,2,Cigna,Denied,Medium
+CLM-1562,PAT-1098,111039,32,3,Cigna,Under Review,Medium
+CLM-1563,PAT-1050,20487,18,0,Humana,Pending,Low
+CLM-1564,PAT-1443,118792,18,4,Aetna,Pending,Medium
+CLM-1565,PAT-1369,151548,37,1,Aetna,Pending,Medium
+CLM-1566,PAT-1319,51372,76,0,BlueCross,Denied,Medium
+CLM-1567,PAT-1277,81833,52,3,Humana,Pending,Medium
+CLM-1568,PAT-1384,155979,75,0,BlueCross,Under Review,Medium
+CLM-1569,PAT-1808,78720,39,5,BlueCross,Pending,Medium
+CLM-1570,PAT-1485,127269,17,5,BlueCross,Under Review,High
+CLM-1571,PAT-1551,20400,84,5,Humana,Pending,Medium
+CLM-1572,PAT-1143,127229,88,0,UnitedHealth,Pending,Medium
+CLM-1573,PAT-1284,101107,10,4,UnitedHealth,Denied,Medium
+CLM-1574,PAT-1589,95984,72,1,BlueCross,Denied,High
+CLM-1575,PAT-1732,62218,73,5,UnitedHealth,Pending,Medium
+CLM-1576,PAT-1255,162674,41,4,BlueCross,Pending,Medium
+CLM-1577,PAT-1523,48165,86,1,Cigna,Denied,Medium
+CLM-1578,PAT-1447,84109,75,1,Humana,Pending,Medium
+CLM-1579,PAT-1126,37959,49,4,Aetna,Under Review,Medium
+CLM-1580,PAT-1825,40634,34,0,BlueCross,Denied,Medium
+CLM-1581,PAT-1567,11045,5,5,Cigna,Denied,Medium
+CLM-1582,PAT-1404,140754,59,0,Aetna,Pending,Medium
+CLM-1583,PAT-1359,12504,9,0,Humana,Pending,Low
+CLM-1584,PAT-1882,8857,33,5,Cigna,Under Review,Medium
+CLM-1585,PAT-1680,36123,81,2,UnitedHealth,Pending,Low
+CLM-1586,PAT-1144,7074,45,4,Cigna,Under Review,Medium
+CLM-1587,PAT-1866,111591,8,1,Aetna,Pending,Low
+CLM-1588,PAT-1621,86110,4,4,Aetna,Pending,Medium
+CLM-1589,PAT-1431,77642,25,3,Humana,Denied,Medium
+CLM-1590,PAT-1395,36166,32,2,Cigna,Denied,Medium
+CLM-1591,PAT-1645,136894,25,2,Cigna,Denied,High
+CLM-1592,PAT-1067,8509,19,5,BlueCross,Denied,Medium
+CLM-1593,PAT-1347,7687,6,4,BlueCross,Under Review,Medium
+CLM-1594,PAT-1203,91377,28,0,Aetna,Denied,Medium
+CLM-1595,PAT-1889,75616,48,4,Cigna,Denied,High
+CLM-1596,PAT-1056,169846,29,0,Humana,Pending,Low
+CLM-1597,PAT-1187,30251,29,1,UnitedHealth,Under Review,Low
+CLM-1598,PAT-1594,166030,74,1,Aetna,Under Review,High
+CLM-1599,PAT-1333,59727,85,1,UnitedHealth,Under Review,Medium
+CLM-1600,PAT-1309,70907,60,3,BlueCross,Denied,High
+CLM-1601,PAT-1767,105419,64,3,UnitedHealth,Denied,High
+CLM-1602,PAT-1164,45453,48,3,Cigna,Pending,Low
+CLM-1603,PAT-1663,135334,27,2,Humana,Pending,Medium
+CLM-1604,PAT-1056,49874,87,4,UnitedHealth,Pending,Medium
+CLM-1605,PAT-1703,168066,19,0,Humana,Denied,Medium
+CLM-1606,PAT-1194,63268,87,2,BlueCross,Pending,Medium
+CLM-1607,PAT-1626,159960,47,3,Aetna,Under Review,High
+CLM-1608,PAT-1180,58335,64,2,BlueCross,Pending,Low
+CLM-1609,PAT-1477,162371,5,5,Aetna,Pending,Medium
+CLM-1610,PAT-1664,142599,52,3,Cigna,Under Review,High
+CLM-1611,PAT-1705,35598,16,4,Cigna,Denied,Medium
+CLM-1612,PAT-1103,149713,84,3,Aetna,Pending,Medium
+CLM-1613,PAT-1637,104579,4,4,UnitedHealth,Denied,High
+CLM-1614,PAT-1673,44291,18,4,BlueCross,Denied,Medium
+CLM-1615,PAT-1750,68312,43,3,UnitedHealth,Denied,Medium
+CLM-1616,PAT-1087,16602,88,0,Cigna,Denied,Medium
+CLM-1617,PAT-1083,6594,9,0,Humana,Denied,Low
+CLM-1618,PAT-1056,6079,1,2,Cigna,Denied,Medium
+CLM-1619,PAT-1869,75064,51,1,UnitedHealth,Pending,Low
+CLM-1620,PAT-1249,66414,81,1,Humana,Under Review,Medium
+CLM-1621,PAT-1714,37536,42,2,UnitedHealth,Pending,Low
+CLM-1622,PAT-1600,77748,59,0,Cigna,Under Review,Medium
+CLM-1623,PAT-1778,33008,42,2,BlueCross,Denied,Medium
+CLM-1624,PAT-1281,101005,55,5,UnitedHealth,Pending,Medium
+CLM-1625,PAT-1818,99781,12,3,Aetna,Under Review,Medium
+CLM-1626,PAT-1515,106328,36,0,Cigna,Pending,Low
+CLM-1627,PAT-1874,85586,54,5,Aetna,Pending,Medium
+CLM-1628,PAT-1136,23172,32,5,Cigna,Pending,Medium
+CLM-1629,PAT-1551,95635,38,4,BlueCross,Pending,Medium
+CLM-1630,PAT-1085,27050,20,4,Humana,Denied,Medium
+CLM-1631,PAT-1677,37834,33,2,UnitedHealth,Under Review,Medium
+CLM-1632,PAT-1177,123981,23,3,Humana,Denied,High
+CLM-1633,PAT-1280,24631,13,2,UnitedHealth,Pending,Low
+CLM-1634,PAT-1189,143199,55,3,BlueCross,Under Review,High
+CLM-1635,PAT-1260,117199,4,1,BlueCross,Under Review,Medium
+CLM-1636,PAT-1386,160309,25,1,Humana,Denied,Medium
+CLM-1637,PAT-1110,75731,55,2,Aetna,Under Review,Medium
+CLM-1638,PAT-1364,10860,24,1,BlueCross,Pending,Low
+CLM-1639,PAT-1826,104486,80,2,UnitedHealth,Under Review,Medium
+CLM-1640,PAT-1398,122810,39,4,BlueCross,Denied,High
+CLM-1641,PAT-1702,153578,26,5,UnitedHealth,Under Review,High
+CLM-1642,PAT-1021,118021,31,1,Cigna,Pending,Low
+CLM-1643,PAT-1365,92020,15,2,Humana,Denied,Medium
+CLM-1644,PAT-1528,146574,47,2,Cigna,Denied,High
+CLM-1645,PAT-1761,118899,68,4,BlueCross,Denied,High
+CLM-1646,PAT-1050,78905,47,0,UnitedHealth,Under Review,Medium
+CLM-1647,PAT-1396,24357,57,2,Aetna,Pending,Low
+CLM-1648,PAT-1076,42475,40,1,Cigna,Pending,Low
+CLM-1649,PAT-1147,53261,47,2,BlueCross,Denied,Medium
+CLM-1650,PAT-1236,11421,29,1,Cigna,Denied,Medium
+CLM-1651,PAT-1753,40637,57,1,UnitedHealth,Under Review,Low
+CLM-1652,PAT-1042,104935,76,5,UnitedHealth,Under Review,High
+CLM-1653,PAT-1885,46861,29,1,Humana,Under Review,Low
+CLM-1654,PAT-1596,29392,68,3,UnitedHealth,Under Review,Medium
+CLM-1655,PAT-1157,30601,9,5,Humana,Pending,Low
+CLM-1656,PAT-1150,14303,26,2,BlueCross,Pending,Low
+CLM-1657,PAT-1351,164691,11,0,Humana,Under Review,Medium
+CLM-1658,PAT-1528,74547,83,5,Cigna,Under Review,High
+CLM-1659,PAT-1742,115733,90,1,Aetna,Pending,Medium
+CLM-1660,PAT-1212,129044,68,2,Aetna,Denied,High
+CLM-1661,PAT-1386,5539,1,4,Aetna,Denied,Medium
+CLM-1662,PAT-1007,18518,86,4,BlueCross,Pending,Medium
+CLM-1663,PAT-1194,160071,63,4,Cigna,Pending,High
+CLM-1664,PAT-1751,168961,1,1,BlueCross,Under Review,Medium
+CLM-1665,PAT-1738,111075,32,0,BlueCross,Pending,Low
+CLM-1666,PAT-1468,84188,80,0,Cigna,Under Review,Medium
+CLM-1667,PAT-1671,168353,38,2,Aetna,Denied,High
+CLM-1668,PAT-1790,56303,45,0,Humana,Under Review,Low
+CLM-1669,PAT-1069,153278,60,5,UnitedHealth,Under Review,High
+CLM-1670,PAT-1792,132219,7,3,BlueCross,Denied,High
+CLM-1671,PAT-1318,69359,12,3,Aetna,Pending,Low
+CLM-1672,PAT-1638,107588,32,4,UnitedHealth,Pending,Medium
+CLM-1673,PAT-1091,115004,82,5,Cigna,Under Review,High
+CLM-1674,PAT-1004,43585,82,3,Humana,Pending,Medium
+CLM-1675,PAT-1041,135205,21,0,Humana,Denied,Medium
+CLM-1676,PAT-1797,11727,58,4,Humana,Pending,Low
+CLM-1677,PAT-1011,27121,62,4,Humana,Under Review,Medium
+CLM-1678,PAT-1079,106986,82,4,UnitedHealth,Under Review,High
+CLM-1679,PAT-1492,170018,3,0,Humana,Pending,Low
+CLM-1680,PAT-1098,112449,16,2,UnitedHealth,Pending,Low
+CLM-1681,PAT-1372,66531,58,5,BlueCross,Pending,Medium
+CLM-1682,PAT-1851,30022,22,4,UnitedHealth,Pending,Low
+CLM-1683,PAT-1117,9298,39,1,UnitedHealth,Under Review,Low
+CLM-1684,PAT-1452,92913,1,2,Aetna,Denied,Medium
+CLM-1685,PAT-1526,29237,63,1,BlueCross,Under Review,Medium
+CLM-1686,PAT-1121,97819,82,3,Cigna,Pending,Medium
+CLM-1687,PAT-1788,65755,8,0,Cigna,Pending,Low
+CLM-1688,PAT-1148,142271,67,1,UnitedHealth,Pending,Medium
+CLM-1689,PAT-1430,65781,1,1,BlueCross,Under Review,Low
+CLM-1690,PAT-1384,12624,12,5,Aetna,Pending,Low
+CLM-1691,PAT-1762,124289,24,1,Humana,Under Review,Medium
+CLM-1692,PAT-1591,87808,23,0,BlueCross,Denied,Medium
+CLM-1693,PAT-1078,105284,84,5,BlueCross,Denied,High
+CLM-1694,PAT-1015,102107,30,4,Cigna,Under Review,Medium
+CLM-1695,PAT-1602,56516,10,5,Humana,Under Review,Medium
+CLM-1696,PAT-1746,109423,67,2,Aetna,Denied,High
+CLM-1697,PAT-1552,46554,54,5,Cigna,Pending,Medium
+CLM-1698,PAT-1132,127959,83,1,Cigna,Pending,Medium
+CLM-1699,PAT-1826,47830,38,1,UnitedHealth,Pending,Low
+CLM-1700,PAT-1109,134574,4,5,Cigna,Denied,High
+CLM-1701,PAT-1571,167524,41,4,UnitedHealth,Pending,Medium
+CLM-1702,PAT-1360,46131,30,5,Cigna,Pending,Medium
+CLM-1703,PAT-1381,33053,56,3,Cigna,Denied,Medium
+CLM-1704,PAT-1157,23740,19,0,Aetna,Denied,Low
+CLM-1705,PAT-1578,156025,48,3,Aetna,Under Review,High
+CLM-1706,PAT-1032,7881,5,5,Aetna,Denied,Medium
+CLM-1707,PAT-1243,85781,70,3,UnitedHealth,Pending,Medium
+CLM-1708,PAT-1732,105699,52,3,Humana,Denied,High
+CLM-1709,PAT-1515,23108,83,0,UnitedHealth,Pending,Low
+CLM-1710,PAT-1800,162097,56,3,BlueCross,Denied,High
+CLM-1711,PAT-1225,31685,66,2,Aetna,Under Review,Medium
+CLM-1712,PAT-1627,20789,67,5,BlueCross,Denied,High
+CLM-1713,PAT-1281,65868,5,4,Cigna,Denied,High
+CLM-1714,PAT-1643,124052,17,0,Cigna,Denied,Medium
+CLM-1715,PAT-1492,56138,70,0,Cigna,Denied,Medium
+CLM-1716,PAT-1203,87028,8,1,Cigna,Under Review,Medium
+CLM-1717,PAT-1270,43407,28,3,UnitedHealth,Pending,Low
+CLM-1718,PAT-1795,145670,86,5,UnitedHealth,Denied,High
+CLM-1719,PAT-1131,172966,65,0,UnitedHealth,Denied,High
+CLM-1720,PAT-1432,19232,62,1,UnitedHealth,Denied,Medium
+CLM-1721,PAT-1771,169855,12,2,BlueCross,Denied,High
+CLM-1722,PAT-1573,93699,88,3,Humana,Denied,High
+CLM-1723,PAT-1199,159830,63,0,Cigna,Under Review,Medium
+CLM-1724,PAT-1133,133254,43,4,UnitedHealth,Denied,High
+CLM-1725,PAT-1166,150392,40,0,Aetna,Pending,Low
+CLM-1726,PAT-1556,7769,38,2,Humana,Under Review,Medium
+CLM-1727,PAT-1685,101469,22,3,Cigna,Pending,Low
+CLM-1728,PAT-1413,26595,33,0,UnitedHealth,Under Review,Low
+CLM-1729,PAT-1067,71886,74,1,Aetna,Pending,Medium
+CLM-1730,PAT-1219,120029,18,4,Humana,Under Review,Medium
+CLM-1731,PAT-1254,97181,6,3,Humana,Under Review,Medium
+CLM-1732,PAT-1686,166916,37,3,Cigna,Denied,High
+CLM-1733,PAT-1730,115132,12,4,BlueCross,Under Review,Medium
+CLM-1734,PAT-1643,34654,44,5,Humana,Pending,Medium
+CLM-1735,PAT-1818,71090,21,1,BlueCross,Pending,Low
+CLM-1736,PAT-1115,129013,15,1,BlueCross,Pending,Low
+CLM-1737,PAT-1180,149326,12,2,UnitedHealth,Denied,High
+CLM-1738,PAT-1622,150856,33,1,Aetna,Pending,Medium
+CLM-1739,PAT-1381,119495,77,0,Cigna,Under Review,Medium
+CLM-1740,PAT-1484,42305,67,0,BlueCross,Denied,Medium
+CLM-1741,PAT-1547,74089,31,4,BlueCross,Under Review,Medium
+CLM-1742,PAT-1227,61018,55,3,BlueCross,Pending,Medium
+CLM-1743,PAT-1449,52748,19,3,Cigna,Pending,Low
+CLM-1744,PAT-1547,149188,49,4,Cigna,Pending,Medium
+CLM-1745,PAT-1803,128435,25,1,UnitedHealth,Under Review,Medium
+CLM-1746,PAT-1025,118402,64,3,BlueCross,Under Review,High
+CLM-1747,PAT-1574,174024,59,5,BlueCross,Denied,High
+CLM-1748,PAT-1724,160351,29,1,Aetna,Pending,Medium
+CLM-1749,PAT-1604,157604,77,4,Aetna,Under Review,High
+CLM-1750,PAT-1632,78959,39,3,BlueCross,Pending,Medium
+CLM-1751,PAT-1674,171515,37,0,UnitedHealth,Pending,Low
+CLM-1752,PAT-1656,121746,33,0,Aetna,Under Review,Medium
+CLM-1753,PAT-1331,166581,67,1,UnitedHealth,Under Review,High
+CLM-1754,PAT-1687,44110,80,4,UnitedHealth,Denied,High
+CLM-1755,PAT-1798,53300,76,4,Aetna,Denied,High
+CLM-1756,PAT-1697,25970,10,5,BlueCross,Denied,High
+CLM-1757,PAT-1196,115491,34,4,BlueCross,Pending,Medium
+CLM-1758,PAT-1085,110823,57,4,UnitedHealth,Denied,High
+CLM-1759,PAT-1096,7619,58,3,UnitedHealth,Denied,Medium
+CLM-1760,PAT-1029,74068,19,1,Aetna,Under Review,Low
+CLM-1761,PAT-1117,168382,18,2,Humana,Under Review,Medium
+CLM-1762,PAT-1688,131046,15,2,Humana,Pending,Medium
+CLM-1763,PAT-1118,157055,42,4,Aetna,Under Review,High
+CLM-1764,PAT-1783,73733,49,0,UnitedHealth,Pending,Low
+CLM-1765,PAT-1707,148044,53,4,Aetna,Denied,High
+CLM-1766,PAT-1162,165748,2,4,Humana,Pending,Medium
+CLM-1767,PAT-1438,11827,54,1,Aetna,Denied,Medium
+CLM-1768,PAT-1871,82559,87,2,Humana,Pending,Medium
+CLM-1769,PAT-1599,5145,51,1,Cigna,Pending,Low
+CLM-1770,PAT-1526,150330,55,3,Cigna,Under Review,High
+CLM-1771,PAT-1063,33833,72,0,Cigna,Pending,Low
+CLM-1772,PAT-1512,30536,24,1,BlueCross,Denied,Medium
+CLM-1773,PAT-1734,162384,78,2,Humana,Under Review,High
+CLM-1774,PAT-1385,164453,85,1,Cigna,Under Review,High
+CLM-1775,PAT-1105,115226,27,0,Aetna,Under Review,Low
+CLM-1776,PAT-1081,31154,30,2,Humana,Denied,Medium
+CLM-1777,PAT-1751,110609,40,3,Aetna,Denied,High
+CLM-1778,PAT-1509,8268,60,2,Cigna,Denied,Medium
+CLM-1779,PAT-1313,115104,55,5,Humana,Denied,High
+CLM-1780,PAT-1716,174543,30,1,Humana,Pending,Low
+CLM-1781,PAT-1265,37887,61,2,Aetna,Pending,Low
+CLM-1782,PAT-1869,57597,28,2,BlueCross,Pending,Low
+CLM-1783,PAT-1150,52102,11,4,Humana,Pending,Low
+CLM-1784,PAT-1249,136892,1,4,UnitedHealth,Under Review,High
+CLM-1785,PAT-1614,154707,36,1,Aetna,Denied,High
+CLM-1786,PAT-1695,124255,29,5,Cigna,Under Review,High
+CLM-1787,PAT-1077,95043,63,2,Humana,Pending,Medium
+CLM-1788,PAT-1587,132218,71,3,Humana,Pending,High
+CLM-1789,PAT-1616,10801,86,2,Cigna,Pending,Low
+CLM-1790,PAT-1708,117634,37,0,Aetna,Under Review,Medium
+CLM-1791,PAT-1598,141463,57,3,BlueCross,Denied,High
+CLM-1792,PAT-1104,90718,8,3,BlueCross,Pending,Medium
+CLM-1793,PAT-1360,156834,37,4,Humana,Denied,High
+CLM-1794,PAT-1159,154778,62,3,BlueCross,Under Review,High
+CLM-1795,PAT-1780,65154,20,4,Aetna,Under Review,Medium
+CLM-1796,PAT-1441,74356,26,2,Humana,Pending,Low
+CLM-1797,PAT-1359,156022,37,3,Humana,Denied,High
+CLM-1798,PAT-1841,128962,74,1,Cigna,Pending,Medium
+CLM-1799,PAT-1840,159596,39,5,Humana,Pending,High
+CLM-1800,PAT-1115,154972,37,1,Aetna,Pending,Medium
+CLM-1801,PAT-1141,70030,28,0,Aetna,Denied,Medium
+CLM-1802,PAT-1597,87917,26,3,Humana,Pending,Low
+CLM-1803,PAT-1777,149415,24,2,UnitedHealth,Denied,High
+CLM-1804,PAT-1512,108248,57,1,BlueCross,Pending,Low
+CLM-1805,PAT-1384,12797,11,4,Cigna,Under Review,Medium
+CLM-1806,PAT-1583,125227,77,3,Cigna,Pending,Medium
+CLM-1807,PAT-1865,124307,21,5,Aetna,Under Review,High
+CLM-1808,PAT-1883,75380,11,1,BlueCross,Pending,Low
+CLM-1809,PAT-1631,87310,62,2,Humana,Pending,Medium
+CLM-1810,PAT-1162,9357,86,5,Humana,Under Review,High
+CLM-1811,PAT-1190,62935,85,4,UnitedHealth,Pending,Medium
+CLM-1812,PAT-1491,12666,1,4,UnitedHealth,Denied,Medium
+CLM-1813,PAT-1360,39998,1,1,Aetna,Denied,Medium
+CLM-1814,PAT-1418,158606,56,0,BlueCross,Denied,Medium
+CLM-1815,PAT-1065,44710,55,0,Humana,Pending,Low
+CLM-1816,PAT-1580,37655,55,3,Aetna,Under Review,Medium
+CLM-1817,PAT-1636,134687,72,3,Cigna,Under Review,High
+CLM-1818,PAT-1121,148880,88,2,UnitedHealth,Denied,High
+CLM-1819,PAT-1233,107921,69,2,BlueCross,Denied,High
+CLM-1820,PAT-1570,63415,84,1,Humana,Pending,Low
+CLM-1821,PAT-1844,29136,42,2,Aetna,Denied,Medium
+CLM-1822,PAT-1752,22154,89,3,Cigna,Pending,Medium
+CLM-1823,PAT-1768,126696,36,1,BlueCross,Under Review,Medium
+CLM-1824,PAT-1604,86549,12,4,BlueCross,Denied,High
+CLM-1825,PAT-1427,13503,27,3,Cigna,Pending,Low
+CLM-1826,PAT-1374,140015,50,0,Humana,Denied,Medium
+CLM-1827,PAT-1034,84920,71,3,Humana,Denied,High
+CLM-1828,PAT-1833,29240,72,0,BlueCross,Under Review,Medium
+CLM-1829,PAT-1476,150963,75,3,Aetna,Denied,High
+CLM-1830,PAT-1031,68037,69,2,Aetna,Pending,Medium
+CLM-1831,PAT-1273,153261,8,2,Aetna,Under Review,Medium
+CLM-1832,PAT-1357,54903,15,2,Cigna,Denied,Medium
+CLM-1833,PAT-1226,80902,57,1,Cigna,Denied,Medium
+CLM-1834,PAT-1678,76077,57,4,Cigna,Pending,Medium
+CLM-1835,PAT-1562,52327,20,5,UnitedHealth,Under Review,Medium
+CLM-1836,PAT-1265,127261,80,5,UnitedHealth,Pending,High
+CLM-1837,PAT-1786,71445,13,2,Cigna,Denied,Medium
+CLM-1838,PAT-1298,12309,25,2,UnitedHealth,Pending,Low
+CLM-1839,PAT-1397,56631,4,2,Humana,Under Review,Low
+CLM-1840,PAT-1190,149245,83,5,UnitedHealth,Under Review,High
+CLM-1841,PAT-1400,171488,9,4,BlueCross,Pending,Medium
+CLM-1842,PAT-1668,165618,90,4,BlueCross,Denied,High
+CLM-1843,PAT-1101,109927,78,5,Humana,Under Review,High
+CLM-1844,PAT-1696,111091,65,1,Aetna,Under Review,Medium
+CLM-1845,PAT-1564,48724,73,1,Cigna,Pending,Low
+CLM-1846,PAT-1284,55091,47,5,UnitedHealth,Denied,High
+CLM-1847,PAT-1527,23597,27,2,Aetna,Under Review,Low
+CLM-1848,PAT-1219,29875,84,5,Aetna,Denied,High
+CLM-1849,PAT-1073,160178,87,0,BlueCross,Under Review,Medium
+CLM-1850,PAT-1841,21711,81,2,UnitedHealth,Pending,Medium
+CLM-1851,PAT-1770,34365,68,5,BlueCross,Denied,High
+CLM-1852,PAT-1111,65864,32,4,Humana,Denied,High
+CLM-1853,PAT-1785,25752,16,0,Aetna,Pending,Low
+CLM-1854,PAT-1727,30547,32,2,Aetna,Under Review,Medium
+CLM-1855,PAT-1553,17675,13,0,Cigna,Under Review,Low
+CLM-1856,PAT-1551,84033,52,1,Cigna,Denied,Medium
+CLM-1857,PAT-1376,153575,68,2,Aetna,Denied,High
+CLM-1858,PAT-1359,59146,75,4,Aetna,Denied,High
+CLM-1859,PAT-1812,42060,48,2,UnitedHealth,Pending,Low
+CLM-1860,PAT-1595,43102,79,2,BlueCross,Denied,High
+CLM-1861,PAT-1538,165715,76,1,Cigna,Pending,Medium
+CLM-1862,PAT-1111,135758,22,2,BlueCross,Under Review,Medium
+CLM-1863,PAT-1236,47419,42,5,BlueCross,Denied,High
+CLM-1864,PAT-1362,13329,44,5,Cigna,Under Review,Medium
+CLM-1865,PAT-1240,7598,2,0,UnitedHealth,Denied,Medium
+CLM-1866,PAT-1245,45648,89,1,Aetna,Under Review,Medium
+CLM-1867,PAT-1304,71125,15,5,BlueCross,Under Review,Medium
+CLM-1868,PAT-1034,146451,35,1,Cigna,Under Review,Medium
+CLM-1869,PAT-1473,136472,60,3,BlueCross,Under Review,Medium
+CLM-1870,PAT-1851,117542,70,2,Humana,Pending,Medium
+CLM-1871,PAT-1761,122666,10,2,Humana,Under Review,Medium
+CLM-1872,PAT-1038,40934,5,3,UnitedHealth,Pending,Low
+CLM-1873,PAT-1812,22982,48,3,Aetna,Under Review,Medium
+CLM-1874,PAT-1244,142225,69,3,BlueCross,Denied,High
+CLM-1875,PAT-1274,52363,79,1,Aetna,Denied,Medium
+CLM-1876,PAT-1286,35590,10,4,UnitedHealth,Pending,Low
+CLM-1877,PAT-1356,45293,87,3,Aetna,Denied,High
+CLM-1878,PAT-1794,37977,77,2,Humana,Pending,Medium
+CLM-1879,PAT-1619,108065,1,2,BlueCross,Under Review,Medium
+CLM-1880,PAT-1784,167043,65,1,Humana,Denied,High
+CLM-1881,PAT-1369,29175,66,2,Cigna,Denied,High
+CLM-1882,PAT-1543,50311,30,3,Cigna,Pending,Low
+CLM-1883,PAT-1062,84746,67,1,Humana,Under Review,Medium
+CLM-1884,PAT-1696,94627,18,1,Aetna,Under Review,Medium
+CLM-1885,PAT-1313,11418,3,3,BlueCross,Pending,Low
+CLM-1886,PAT-1815,174612,24,5,UnitedHealth,Denied,High
+CLM-1887,PAT-1131,90133,61,0,Humana,Under Review,Medium
+CLM-1888,PAT-1085,106622,46,0,BlueCross,Pending,Low
+CLM-1889,PAT-1252,13697,80,2,BlueCross,Denied,Medium
+CLM-1890,PAT-1299,128206,78,5,BlueCross,Under Review,High
+CLM-1891,PAT-1615,61753,85,3,Humana,Under Review,High
+CLM-1892,PAT-1592,17101,73,5,BlueCross,Pending,Medium
+CLM-1893,PAT-1426,54713,62,4,Aetna,Denied,High
+CLM-1894,PAT-1304,98425,18,1,Humana,Under Review,Medium
+CLM-1895,PAT-1782,7679,72,2,Cigna,Pending,Medium
+CLM-1896,PAT-1491,31991,76,4,BlueCross,Under Review,Medium
+CLM-1897,PAT-1536,68113,54,2,Aetna,Under Review,Medium
+CLM-1898,PAT-1490,172106,2,2,UnitedHealth,Denied,Medium
+CLM-1899,PAT-1878,72082,75,4,UnitedHealth,Pending,Medium
+CLM-1900,PAT-1488,8076,49,1,UnitedHealth,Pending,Low
+CLM-1901,PAT-1790,121228,33,4,Aetna,Pending,Medium
+CLM-1902,PAT-1639,49638,6,2,UnitedHealth,Pending,Low
+CLM-1903,PAT-1185,28321,3,5,UnitedHealth,Pending,Medium
+CLM-1904,PAT-1227,146946,80,3,Aetna,Under Review,High
+CLM-1905,PAT-1289,106575,25,2,BlueCross,Under Review,Medium
+CLM-1906,PAT-1081,105003,22,4,Cigna,Under Review,Medium
+CLM-1907,PAT-1084,53859,46,2,Cigna,Pending,Low
+CLM-1908,PAT-1252,75774,51,5,Humana,Pending,Medium
+CLM-1909,PAT-1366,65823,73,3,UnitedHealth,Under Review,Medium
+CLM-1910,PAT-1869,149554,71,3,Aetna,Pending,Medium
+CLM-1911,PAT-1233,150000,20,2,UnitedHealth,Pending,Medium
+CLM-1912,PAT-1003,52378,55,1,UnitedHealth,Pending,Low
+CLM-1913,PAT-1501,86385,22,3,UnitedHealth,Pending,Low
+CLM-1914,PAT-1071,10636,85,0,Aetna,Under Review,Medium
+CLM-1915,PAT-1086,116457,80,0,Humana,Denied,Medium
+CLM-1916,PAT-1419,153039,37,2,UnitedHealth,Denied,High
+CLM-1917,PAT-1493,65946,30,1,Aetna,Pending,Low
+CLM-1918,PAT-1853,71846,21,2,UnitedHealth,Pending,Low
+CLM-1919,PAT-1498,114241,66,2,UnitedHealth,Denied,High
+CLM-1920,PAT-1259,28228,6,1,Humana,Pending,Low
+CLM-1921,PAT-1528,51434,1,5,Cigna,Denied,Medium
+CLM-1922,PAT-1385,145240,63,5,Humana,Denied,High
+CLM-1923,PAT-1308,79436,41,4,Aetna,Pending,Medium
+CLM-1924,PAT-1507,28955,84,3,BlueCross,Denied,High
+CLM-1925,PAT-1206,121336,37,1,Cigna,Denied,High
+CLM-1926,PAT-1617,101383,24,3,Aetna,Under Review,Medium
+CLM-1927,PAT-1199,8749,39,4,UnitedHealth,Denied,High
+CLM-1928,PAT-1782,136603,36,2,BlueCross,Under Review,Medium
+CLM-1929,PAT-1494,126020,84,2,Humana,Under Review,High
+CLM-1930,PAT-1535,16865,38,5,Cigna,Under Review,Medium
+CLM-1931,PAT-1867,13757,68,1,UnitedHealth,Pending,Low
+CLM-1932,PAT-1743,118586,83,2,Cigna,Denied,High
+CLM-1933,PAT-1006,87560,34,0,Cigna,Denied,Medium
+CLM-1934,PAT-1364,97230,30,4,Aetna,Denied,Medium
+CLM-1935,PAT-1889,161380,48,2,Cigna,Under Review,Medium
+CLM-1936,PAT-1310,8202,24,4,BlueCross,Pending,Low
+CLM-1937,PAT-1341,137836,72,2,BlueCross,Pending,Medium
+CLM-1938,PAT-1627,156365,21,0,UnitedHealth,Pending,Low
+CLM-1939,PAT-1825,121806,61,5,Aetna,Pending,High
+CLM-1940,PAT-1480,29731,28,0,BlueCross,Under Review,Low
+CLM-1941,PAT-1228,71469,76,4,Cigna,Under Review,High
+CLM-1942,PAT-1735,99604,88,2,Humana,Pending,Medium
+CLM-1943,PAT-1470,12884,76,5,Humana,Denied,High
+CLM-1944,PAT-1240,103849,4,1,BlueCross,Pending,Low
+CLM-1945,PAT-1444,74211,70,3,BlueCross,Denied,High
+CLM-1946,PAT-1061,161275,19,4,BlueCross,Denied,High
+CLM-1947,PAT-1491,81136,89,0,Humana,Under Review,Medium
+CLM-1948,PAT-1194,47059,61,5,BlueCross,Denied,High
+CLM-1949,PAT-1862,45804,29,3,UnitedHealth,Denied,Medium
+CLM-1950,PAT-1486,25737,38,0,Humana,Under Review,Low
+CLM-1951,PAT-1216,83200,52,2,UnitedHealth,Denied,Medium
+CLM-1952,PAT-1135,85315,58,2,Aetna,Pending,Low
+CLM-1953,PAT-1458,77798,73,4,Aetna,Pending,Medium
+CLM-1954,PAT-1299,5583,43,1,Humana,Pending,Low
+CLM-1955,PAT-1838,18495,63,2,Humana,Under Review,Medium
+CLM-1956,PAT-1357,14989,73,0,UnitedHealth,Denied,Medium
+CLM-1957,PAT-1611,23242,84,5,Cigna,Under Review,High
+CLM-1958,PAT-1843,170848,44,5,UnitedHealth,Under Review,High
+CLM-1959,PAT-1296,68594,85,3,Aetna,Pending,Medium
+CLM-1960,PAT-1693,98164,75,5,Cigna,Under Review,High
+CLM-1961,PAT-1300,134857,88,2,BlueCross,Under Review,High
+CLM-1962,PAT-1322,155467,41,0,BlueCross,Under Review,Medium
+CLM-1963,PAT-1500,90582,9,5,BlueCross,Under Review,Medium
+CLM-1964,PAT-1852,5563,56,0,Aetna,Under Review,Low
+CLM-1965,PAT-1069,84356,32,2,BlueCross,Under Review,Medium
+CLM-1966,PAT-1187,151106,21,5,BlueCross,Denied,High
+CLM-1967,PAT-1499,96009,54,5,Humana,Pending,Medium
+CLM-1968,PAT-1009,152384,89,3,BlueCross,Denied,High
+CLM-1969,PAT-1610,172757,54,1,Aetna,Denied,High
+CLM-1970,PAT-1061,150789,9,5,BlueCross,Under Review,High
+CLM-1971,PAT-1200,73016,55,0,Aetna,Under Review,Medium
+CLM-1972,PAT-1553,8554,73,4,Humana,Pending,Medium
+CLM-1973,PAT-1822,137239,64,2,BlueCross,Pending,Medium
+CLM-1974,PAT-1510,149328,44,3,Aetna,Denied,High
+CLM-1975,PAT-1582,8314,58,5,Aetna,Under Review,Medium
+CLM-1976,PAT-1604,73708,40,4,Humana,Pending,Medium
+CLM-1977,PAT-1491,167812,84,5,BlueCross,Under Review,High
+CLM-1978,PAT-1054,28788,88,3,Cigna,Under Review,Medium
+CLM-1979,PAT-1299,146180,35,1,Aetna,Pending,Medium
+CLM-1980,PAT-1601,97145,27,5,Aetna,Denied,High
+CLM-1981,PAT-1419,70107,28,3,UnitedHealth,Denied,Medium
+CLM-1982,PAT-1357,63637,33,3,Humana,Denied,High
+CLM-1983,PAT-1881,169522,87,2,BlueCross,Pending,Medium
+CLM-1984,PAT-1298,174863,85,4,UnitedHealth,Pending,High
+CLM-1985,PAT-1065,172092,8,1,UnitedHealth,Denied,Medium
+CLM-1986,PAT-1514,169542,86,0,BlueCross,Under Review,Medium
+CLM-1987,PAT-1875,94090,17,5,Aetna,Pending,Medium
+CLM-1988,PAT-1600,115206,56,0,UnitedHealth,Under Review,Medium
+CLM-1989,PAT-1154,55393,2,4,Humana,Under Review,Medium
+CLM-1990,PAT-1891,63921,17,5,Cigna,Pending,Medium
+CLM-1991,PAT-1423,171780,32,5,Cigna,Pending,Medium
+CLM-1992,PAT-1853,154266,4,2,BlueCross,Pending,Medium
+CLM-1993,PAT-1708,167168,23,2,BlueCross,Denied,High
+CLM-1994,PAT-1548,140887,56,3,UnitedHealth,Pending,Medium
+CLM-1995,PAT-1234,67495,8,1,Aetna,Pending,Low
+CLM-1996,PAT-1845,29989,65,5,UnitedHealth,Under Review,High
+CLM-1997,PAT-1261,99463,28,4,Humana,Under Review,Medium
+CLM-1998,PAT-1054,103848,38,2,BlueCross,Denied,Medium
+CLM-1999,PAT-1374,155107,49,4,Aetna,Under Review,High
